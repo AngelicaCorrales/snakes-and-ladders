@@ -1,5 +1,6 @@
 package ui;
 
+<<<<<<< HEAD
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -9,6 +10,16 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 import model.Game;
+=======
+//import model.Grid;
+
+public class Main {
+
+	public static void main(String[] args) {
+		//Grid grid =new Grid(null, 0, 0, 5, 4);
+		//System.out.println(grid);
+		//System.out.println(grid.getFinalSquare());
+>>>>>>> 1e7b118100bb7b96d57be879e137086f4275a77d
 
 public class Main {
 	
