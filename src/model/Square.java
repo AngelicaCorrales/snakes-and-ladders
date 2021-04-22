@@ -4,17 +4,18 @@ public class Square {
 	private int num;
 	private char snake;
 	private int ladder;
-	private String players;
+	private int col;
+	private int row;
+	private Player firstPlayer;
 
 	private Square next;
 	private Square prev;
 	private Square up;	
 	private Square down;
 
-	public Square(int num, char snake, int ladder) {
-		this.num = num;
-		this.snake = snake;
-		this.ladder = ladder;
+	public Square(int row, int col) {
+		this.col = col;
+		this.row = row;
 	}
 
 	public Square getNext() {
@@ -73,11 +74,27 @@ public class Square {
 		this.ladder = ladder;
 	}
 
-	public String getPlayers() {
-		return players;
+	public Player getFirstPlayer() {
+		return firstPlayer;
 	}
 
-	public void setPlayers(String players) {
-		this.players = players;
+	public void setFirstPlayer(Player firstPlayer) {
+		this.firstPlayer = firstPlayer;
+	}
+
+	public int getCol() {
+		return col;
+	}
+
+	public void setCol(int col) {
+		this.col = col;
+	}
+
+	public int getRow() {
+		return row;
+	}
+
+	public void setRow(int row) {
+		this.row = row;
 	}
 }

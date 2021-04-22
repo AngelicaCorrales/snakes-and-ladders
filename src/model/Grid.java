@@ -73,4 +73,3 @@ public class Grid {
 		return msg;
 	}
 }
-}
