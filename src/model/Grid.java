@@ -13,8 +13,8 @@ public class Grid {
 	}
 	
 	private void createGrid() {
-		firstSquare = new Square(0,0);
-		createRow(0,0,first);
+		firstSquare = new Square((rows-1),0);
+		createRow((rows-1),0,firstSquare);
 	}
 
 	private void createRow(int i, int j, Square currentFirstRow) {
@@ -73,4 +73,4 @@ public class Grid {
 		return msg;
 	}
 }
-}
+
