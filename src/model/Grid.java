@@ -2,6 +2,8 @@ package model;
 
 public class Grid {
 	private Square firstSquare;
+	private Square finalSquare;
+	private Square zeroSquare;
 	private int rows;
 	private int columns;
 	
@@ -18,34 +20,47 @@ public class Grid {
 	}
 
 	private void createRow(int i, int j, Square currentFirstRow) {
-		createCol(i,j+1,currentFirstRow,currentFirstRow.getUp());
-		if(i+1<rows) {
-			Square downFirstRow = new Square(i+1,j);
-			downFirstRow.setUp(currentFirstRow);
-			currentFirstRow.setDown(downFirstRow);
-			createRow(i+1,j,downFirstRow);
+		createCol(i,j+1,currentFirstRow,currentFirstRow.getDown());
+		if((i-1)>=0) {
+			Square upFirstRow = new Square((i-1),j);
+			
+			if((i-1)==0) {
+				zeroSquare=upFirstRow;
+				if(rows%2==0) {
+					finalSquare=upFirstRow;
+				}
+			}
+			
+			upFirstRow.setDown(currentFirstRow);
+			currentFirstRow.setUp(upFirstRow);
+			createRow((i-1),j,upFirstRow);
 		}
 	}
 
-	private void createCol(int i, int j, Square prev, Square rowPrev) {
+	private void createCol(int i, int j, Square prev, Square rowDown) {
 		if(j<columns) {
 			Square current = new Square(i, j);
+			if(rows%2!=0) {
+				if(i==0 && j==(columns-1)) {
+					finalSquare=current;
+				}
+			}
 			current.setPrev(prev);
 			prev.setNext(current);
 			
-			if(rowPrev!=null) {
-				rowPrev = rowPrev.getNext();
-				current.setUp(rowPrev);
-				rowPrev.setDown(current);
+			if(rowDown!=null) {
+				rowDown = rowDown.getNext();
+				current.setDown(rowDown);
+				rowDown.setUp(current);
 			}
 			
-			createCol(i,j+1,current,rowPrev);
+			createCol(i,j+1,current,rowDown);
 		}
 	}
 	
 	public String toString() {
 		String msg;
-		msg = toStringRow(firstSquare);
+		msg = toStringRow(zeroSquare);
 		return msg;
 	}
 
@@ -72,4 +87,9 @@ public class Grid {
 		
 		return msg;
 	}
+	public Square getFinalSquare() {
+		return finalSquare;
+	}
+
+	
 }
