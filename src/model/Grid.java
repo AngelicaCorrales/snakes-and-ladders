@@ -1,5 +1,7 @@
 package model;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class Grid {
 	private Square firstSquare;
 	private Square finalSquare;
@@ -12,10 +14,57 @@ public class Grid {
 		this.columns = columns;
 		//pendiente escaleras y serpientes
 		createGrid();
+<<<<<<< HEAD
 		int cont = 0;
 		firstSquare.addPlayers(players, cont);
+=======
+		
+		
+		addLadders(ladders);
 	}
 	
+	private void addLadders(int ladders) {
+		
+		if(ladders==0) {
+			return;
+		}else {
+			
+			int i1 = ThreadLocalRandom.current().nextInt(0, rows-1);
+			int i2 = ThreadLocalRandom.current().nextInt(0, rows-1);
+			int j1 = ThreadLocalRandom.current().nextInt(0, columns-1);
+			int j2 = ThreadLocalRandom.current().nextInt(0, columns-1);
+			if(i1==i2 || ((i1==rows-1) && j1==0) || ((i2==rows-1) && j2==0)) {
+				addLadders(ladders);
+			}else {
+				addLadders(i1,j1, ladders);
+				addLadders(i2,j2, ladders);
+				addLadders(ladders-1);
+
+			}			
+
+		}
+		
+>>>>>>> 933d929f7b6b7be2f704182612374765f03ac068
+	}
+	
+	private void addLadders(int i, int j, int ladder) {
+		Square square= searchSquare(i,j, zeroSquare);
+		square.setLadder(ladder);
+	}
+
+	private Square searchSquare(int i, int j, Square square) {
+		
+		if(i==square.getRow() && j==square.getCol()) {
+			return square;
+		}else {
+			if(i==square.getRow()) {
+				return searchSquare(i, j,square.getNext());
+			}else {
+				return searchSquare(i, j,square.getDown());
+			}
+		}
+	}
+
 	private void createGrid() {
 		firstSquare = new Square((rows-1),0);
 		firstSquare.setNum(1);

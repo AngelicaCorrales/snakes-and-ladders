@@ -1,4 +1,5 @@
 package ui;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -8,15 +9,25 @@ import java.io.OutputStreamWriter;
 
 import model.Game;
 
-//import model.Grid;
+/*import model.Grid;
 
-/*public class Main {
+public class Main {
 
 	public static void main(String[] args) {
+<<<<<<< HEAD
 		//Grid grid =new Grid(null, 0, 0, 5, 4);
 		//System.out.println(grid);
 		//System.out.println(grid.getFinalSquare());
  */
+=======
+		Grid grid =new Grid(null, 0, 2, 5, 4);
+		System.out.println(grid);
+		
+	}
+}
+*/
+>>>>>>> 933d929f7b6b7be2f704182612374765f03ac068
+
 
 public class Main {
 
@@ -187,3 +198,4 @@ public class Main {
 
 	}
 }
+

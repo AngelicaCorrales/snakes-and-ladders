@@ -109,6 +109,10 @@ public class Square {
 	}
 	
 	public String toString() {
-		return "["+row+","+col+"("+num+") ]";
+		String ladderString="";
+		if(ladder!=0) {
+			ladderString=String.valueOf(ladder);
+		}
+		return "["+row+","+col+"("+num+ladderString+") ]";
 	}
 }
