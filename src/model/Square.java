@@ -17,6 +17,16 @@ public class Square {
 		this.col = col;
 		this.row = row;
 	}
+	
+	public void addPlayers(String players, int cont) {
+		if(cont!=players.length()) {
+			firstPlayer = new Player(players.charAt(cont), 0);
+			cont+=1;
+			if(cont!=players.length()) {
+				addPlayers(players, cont);
+			}
+		}
+	}
 
 	public Square getNext() {
 		return next;

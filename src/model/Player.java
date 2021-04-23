@@ -2,12 +2,12 @@ package model;
 
 public class Player {
 
-	private String symbol;
+	private char symbol;
 	private int movements;
 	
-	public Player(String symbol, int movements) {
-		this.setSymbol(symbol);
-		this.setMovements(movements);
+	public Player(char symbol, int movements) {
+		this.symbol = symbol;
+		this.movements = movements;
 	}
 
 	public int getMovements() {
@@ -18,11 +18,11 @@ public class Player {
 		this.movements = movements;
 	}
 
-	public String getSymbol() {
+	public char getSymbol() {
 		return symbol;
 	}
 
-	public void setSymbol(String symbol) {
+	public void setSymbol(char symbol) {
 		this.symbol = symbol;
 	}
 	

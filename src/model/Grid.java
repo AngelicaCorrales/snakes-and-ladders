@@ -14,11 +14,10 @@ public class Grid {
 		this.columns = columns;
 		
 		createGrid();
-		
-		
-		
-		
-		
+
+		int cont = 0;
+		firstSquare.addPlayers(players, cont);
+	
 		addLadders(ladders);
 		addSnakes(snakes);
 	}
@@ -77,6 +76,7 @@ public class Grid {
 
 		}
 		
+
 	}
 	
 	
