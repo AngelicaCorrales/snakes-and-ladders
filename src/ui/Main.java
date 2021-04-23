@@ -8,19 +8,19 @@ import java.io.OutputStreamWriter;
 
 
 import model.Game;
-
-/*import model.Grid;
+/*
+import model.Grid;
 
 public class Main {
 
 	public static void main(String[] args) {
-		Grid grid =new Grid(null, 0, 2, 5, 4);
+		Grid grid =new Grid(null, 2, 2, 5, 4);
 		System.out.println(grid);
 		
 	}
 }
-*/
 
+*/
 
 public class Main {
 	

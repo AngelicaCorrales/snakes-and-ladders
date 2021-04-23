@@ -103,6 +103,6 @@ public class Square {
 		if(ladder!=0) {
 			ladderString=String.valueOf(ladder);
 		}
-		return "["+row+","+col+"("+num+ladderString+") ]";
+		return "["+num+ladderString+snake+"]";
 	}
 }
