@@ -1,6 +1,4 @@
 package ui;
-
-<<<<<<< HEAD
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -10,16 +8,16 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 import model.Game;
-=======
+
 //import model.Grid;
 
-public class Main {
+/*public class Main {
 
 	public static void main(String[] args) {
 		//Grid grid =new Grid(null, 0, 0, 5, 4);
 		//System.out.println(grid);
 		//System.out.println(grid.getFinalSquare());
->>>>>>> 1e7b118100bb7b96d57be879e137086f4275a77d
+*/
 
 public class Main {
 	
@@ -98,27 +96,42 @@ public class Main {
 		String line = br.readLine();
 		if(line!=null && !line.equals("")) {
 			String[] info = br.readLine().split(" ");
-			int rows = Integer.parseInt(info[0]);
-			int cols = Integer.parseInt(info[1]);
-			int snakes = Integer.parseInt(info[2]);
-			int ladders = Integer.parseInt(info[3]);
-			String players = info[4];
+			if(info.length!=5) {
+				bw.write("Debe ingresar toda la informacion solicitada");
+				startGame();
+			}else {
+				int rows = Integer.parseInt(info[0]);
+				int cols = Integer.parseInt(info[1]);
+				int snakes = Integer.parseInt(info[2]);
+				int ladders = Integer.parseInt(info[3]);
+				String players = info[4];
+				int p = 0;
+				try {
+					p = Integer.parseInt(players);
+					if(p>9) {
+						bw.write("Lo sentimos, esta version del juego no esta disponible para mas de 9 jugadores");
+						startGame();
+					}else {
+						verifyData(rows, cols, snakes, ladders, players);
+					}
+				}catch(NumberFormatException num) {
+					verifyData(rows, cols, snakes, ladders, players);
+				}
+			}
+		}
+	}
+	
+	private void verifyData(int rows, int cols, int snakes, int ladders, String players) throws IOException {
+		if((rows<0 || rows==0)||(cols<0 || cols==0)||(snakes<0 || snakes==0)||(ladders<0 || ladders==0)||(((snakes*2)+(ladders*2))>(rows*cols))) {
+			if(((snakes*2)+(ladders*2))>(rows*cols)){
+				bw.write("De acuerdo con las dimensiones del tablero inrgesadas no es posible colocar el numero de serpientes o escaleras digitado");
+			}else {
+				bw.write("Las filas, columnas, serpientes o escaleras no pueden ser cero");
+			}
+			startGame();
+		}else {
 			mainGame.startGame(rows, cols, snakes, ladders, players);
 		}
-		/*while(line!=null){
-			int availableBooks = Integer.parseInt(line);
-			String[] prices = br.readLine().split(" ");
-			int peterMoney = Integer.parseInt(br.readLine());
-			arrayOfPrices = new int[availableBooks];
-			for(int k = 0;k<prices.length;k++) {
-				arrayOfPrices[k] = Integer.parseInt(prices[k]);
-			}
-			Arrays.sort(arrayOfPrices);
-			String message = findBooks(peterMoney);
-			bw.write(message+"\n\n");
-			line = br.readLine();
-			line = br.readLine();
-		}*/
 	}
 	
 	public void showPositionsBoard() {
