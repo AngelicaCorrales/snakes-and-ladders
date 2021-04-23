@@ -12,6 +12,8 @@ public class Grid {
 		this.columns = columns;
 		//pendiente escaleras y serpientes
 		createGrid();
+		int cont = 0;
+		firstSquare.addPlayers(players, cont);
 	}
 	
 	private void createGrid() {
