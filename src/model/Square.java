@@ -99,6 +99,6 @@ public class Square {
 	}
 	
 	public String toString() {
-		return "["+row+","+col+"]";
+		return "["+row+","+col+"("+num+") ]";
 	}
 }

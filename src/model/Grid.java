@@ -16,6 +16,7 @@ public class Grid {
 	
 	private void createGrid() {
 		firstSquare = new Square((rows-1),0);
+		firstSquare.setNum(1);
 		createRow((rows-1),0,firstSquare);
 	}
 
@@ -33,6 +34,20 @@ public class Grid {
 			
 			upFirstRow.setDown(currentFirstRow);
 			currentFirstRow.setUp(upFirstRow);
+			if(rows%2!=0) { //NUMERO CASILLA PRIMERA DE UNA FILA
+				if((i-1)%2!=0) {
+					upFirstRow.setNum((rows-i+1)*columns);
+				}else {
+					upFirstRow.setNum(currentFirstRow.getNum()+1);
+				}
+			}else {
+				if((i-1)%2==0) {
+					upFirstRow.setNum((rows-i+1)*columns);
+				}else {
+					upFirstRow.setNum(currentFirstRow.getNum()+1);
+				}
+			}
+			
 			createRow((i-1),j,upFirstRow);
 		}
 	}
@@ -40,11 +55,8 @@ public class Grid {
 	private void createCol(int i, int j, Square prev, Square rowDown) {
 		if(j<columns) {
 			Square current = new Square(i, j);
-			if(rows%2!=0) {
-				if(i==0 && j==(columns-1)) {
-					finalSquare=current;
-				}
-			}
+			
+			
 			current.setPrev(prev);
 			prev.setNext(current);
 			
@@ -53,6 +65,29 @@ public class Grid {
 				current.setDown(rowDown);
 				rowDown.setUp(current);
 			}
+			if(rows%2!=0) {//NUMERO DE CASILLA FILA
+				if(i==0 && j==(columns-1)) {
+					finalSquare=current;
+					
+				}
+
+				if((i)%2!=0) {
+
+					current.setNum(prev.getNum()-1); 
+				}else {
+					current.setNum(prev.getNum()+1);
+				}
+				
+			}else {
+				if((i)%2==0) {
+
+					current.setNum(prev.getNum()-1);
+				}else {
+					current.setNum(prev.getNum()+1);
+				}
+			}
+			
+			
 			
 			createCol(i,j+1,current,rowDown);
 		}
