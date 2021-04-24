@@ -48,7 +48,7 @@ public class Winner implements Serializable{
 	}
 	
 	public String toString() {
-		return "\n                                                "+symbol+"                "+"         "+nickname+"         "+"                        "+score+"         ";
+		return "\n                                                "+symbol+"                "+"         "+nickname+"         "+"                           "+score+"         ";
 	}
 
 	public Winner getParent() {

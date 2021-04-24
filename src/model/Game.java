@@ -13,6 +13,7 @@ public class Game {
 	public final static String SAVE_PATH_FILE = "data/winners.ackl";
 	private Grid grid;
 	private String players;
+	private String listOfWinners;
 	private int playerPosition;
 	
 	private Winner winnerRoot;
@@ -20,6 +21,7 @@ public class Game {
 	public Game() {
 		playerPosition = 0;
 		players = "";
+		listOfWinners = "";
 	}
 	
 	private void saveWinners() throws IOException {
@@ -201,7 +203,7 @@ public class Game {
 	}
 	
 	private void addWinner(Winner current, Winner newWinner) {
-		if(newWinner.getScore()<=current.getScore()){
+		if(newWinner.getScore()<current.getScore()){
 			if(current.getRight()==null){
 				current.setRight(newWinner);
 				newWinner.setParent(current);
@@ -220,19 +222,24 @@ public class Game {
 	}
 	
 	public String listWinnersInorder() {
-		String list="";
-		list+=listWinnersInorder(winnerRoot,list);
-		return list;
+		listOfWinners = "";
+		listWinnersInorder(winnerRoot, winnerRoot.getParent());
+		return listOfWinners;
 	}
-	
-	public String listWinnersInorder(Winner current, String list) {
+
+	public void listWinnersInorder(Winner current, Winner parent) {
 		
 		if(current!=null) {
-			list+=listWinnersInorder(current.getLeft(),list);
-			list+=current.toString();
-			list+=listWinnersInorder(current.getRight(),list);
+			if(current.getLeft()!=parent) {
+				listWinnersInorder(current.getLeft(), current);
+			}
+			listOfWinners+=current.toString();
+			if(current.getRight()!=parent) {
+				listWinnersInorder(current.getRight(), current);
+			}
+		}else {
+			return;
 		}
-		return list;
 	}
 	
 	public Grid getGrid() {

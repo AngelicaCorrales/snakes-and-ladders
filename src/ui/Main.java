@@ -29,12 +29,12 @@ public class Main {
 				System.out.println(game.winner());// era un metodo que devolvía el winnerRoot
 			}
 		}
-		
+
 
 	}
 }
 
-*/
+ */
 
 public class Main {
 
@@ -186,20 +186,18 @@ public class Main {
 		bw.flush();
 		String line = br.readLine();
 		if(line!=null) {
-			if(!line.equalsIgnoreCase("num") && !line.equalsIgnoreCase("simul") && !line.equalsIgnoreCase("menu")) {
+			if(line.equals("")) {
 				String msg = mainGame.throwDie();
 				bw.write(msg);
 				bw.flush();
 				if(mainGame.endGame()==false) {
 					showGameBoard();
 				}else {
+					bw.write("\n"+mainGame.getGrid().toString2()+"\n");
+					bw.flush();
 					registerWinner();
 				}
 			}else if(line.equalsIgnoreCase("num")) {
-				bw.write("\nPresione enter para continuar");
-				bw.flush();
-				line = br.readLine();
-				if(line!=null) {
 					showGrid();
 					bw.write("Presione enter para continuar");
 					bw.flush();
@@ -207,22 +205,13 @@ public class Main {
 					if(line!=null) {
 						showGameBoard();
 					}
-				}
 			}else if(line.equalsIgnoreCase("simul")){
-				bw.write("\nPresione enter para continuar");
-				bw.flush();
-				line = br.readLine();
-				if(line!=null) {
-					showSimul();
-				}
+				showSimul();
 			}else if(line.equalsIgnoreCase("menu")) {
-				bw.write("\nPresione enter para continuar");
-				bw.flush();
-				line = br.readLine();
-				if(line!=null) {
-					menu();
-				}
+				menu();
 			}else {
+				bw.write("El comando ingresado no es valido\n");
+				bw.flush();
 				showGameBoard();
 			}
 		}
@@ -293,11 +282,11 @@ public class Main {
 		bw.write("\n                                 **************************************************************************************************");
 		bw.write(mainGame.listWinnersInorder());
 	}
-	
+
 	public void showGrid() throws IOException {
 		bw.write("\n"+mainGame.getGrid().toString()+"\n");
 	}
-	
+
 	public void showSimul() throws IOException, InterruptedException {
 		String msg = mainGame.throwDie();
 		bw.write(msg);
@@ -311,7 +300,7 @@ public class Main {
 			registerWinner();
 		}
 	}
-	
+
 	public void registerWinner() throws IOException {
 		bw.write("\nPor favor ingrese el apodo o nombre del jugador ganador: \n");
 		bw.flush();
