@@ -14,16 +14,6 @@ import model.Grid;
 public class Main {
 
 	public static void main(String[] args) {
-<<<<<<< HEAD
-		//Grid grid =new Grid(null, 0, 0, 5, 4);
-		//System.out.println(grid);
-		//System.out.println(grid.getFinalSquare());
-		Grid grid =new Grid(null, 0, 2, 5, 4);
-		System.out.println(grid);
-		
-	}
-}
-=======
 
 		Grid grid =new Grid(null, 2, 2, 5, 4);
 
@@ -32,7 +22,6 @@ public class Main {
 	}
 }
 
->>>>>>> e97411c061951dab8f4b21203d6271e8a7ed3496
 */
 
 public class Main {

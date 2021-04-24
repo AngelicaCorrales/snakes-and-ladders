@@ -206,4 +206,44 @@ public class Grid {
 		}
 		return msg;
 	}
+
+	public void movePlayer(int num, char player) {
+		Square from =searchPlayerInSquare(player, zeroSquare, zeroSquare.getDown());
+		Square to= searchSquareByNumber((num+from.getNum()), zeroSquare,zeroSquare.getDown());
+		from.movePlayer(to, from.searchPlayer(player));
+	}
+	
+	private Square searchSquareByNumber(int num, Square square,Square squareDown) {
+		if(num>=rows*columns) {
+			return finalSquare;
+		}
+		if(num==square.getNum()) {
+			return square;
+		}else {
+			if(square.getNext()!=null) {
+				return searchSquareByNumber(num,square.getNext(),squareDown);
+			}else {
+				return searchSquareByNumber(num,squareDown,squareDown.getDown());
+			}
+		}
+	}
+
+	private Square searchPlayerInSquare(char player, Square square, Square squareDown) {
+		if(square.searchPlayer(player)!=null) {
+			return square;
+		}else {
+			if(square.getNext()!=null) {
+				return searchPlayerInSquare(player,square.getNext(), squareDown);
+			}else {
+				//if(square.getDown()!=null) {
+					return searchPlayerInSquare(player,squareDown, squareDown.getDown());
+				//}else {
+					//return null;
+				//}
+				
+				
+			}
+		}
+		
+	}
 }

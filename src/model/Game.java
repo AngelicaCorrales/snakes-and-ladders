@@ -132,7 +132,7 @@ public class Game {
 
 	public String throwDie() {
 		int num = ThreadLocalRandom.current().nextInt(1, 7);
-		movePlayers(num);
+		movePlayer(num, returnPlayer());
 		String msg = "El jugador "+returnPlayer()+" ha lanzado el dado y obtuvo el puntaje"+" "+num;
 		playerPosition+=1;
 		return msg;
@@ -149,8 +149,8 @@ public class Game {
 		return p;
 	}
 	
-	public void movePlayers(int num) {
-
+	public void movePlayer(int num, char player) {
+		grid.movePlayer(num, player);
 	}
 	
 	public Grid getGrid() {
