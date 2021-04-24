@@ -161,7 +161,21 @@ public class Square {
 		if(ladder!=0) {
 			ladderString=String.valueOf(ladder);
 		}
-		return "["+ladderString+snake+"]";
+		return "["+ladderString+snake+playerString()+"]";
+	}
+	
+	public String playerString(Player player) {
+		String s="";
+		if(player.getNext()==null){
+			s+=String.valueOf(player.getSymbol());
+		}else {
+			s+=playerString(player.getNext());
+		}
+		return s;
+	}
+	
+	public String playerString() {
+		return playerString(firstPlayer);
 	}
 
 	public Player searchPlayer(char player) {
