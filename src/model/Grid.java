@@ -12,40 +12,82 @@ public class Grid {
 	public Grid(String players, int snakes, int ladders, int rows, int columns) {
 		this.rows = rows;
 		this.columns = columns;
-		//pendiente escaleras y serpientes
+		
 		createGrid();
+<<<<<<< HEAD
 		int cont = 0;
 		firstSquare.addPlayers(players, cont);
+=======
+
+		int cont = 0;
+		firstSquare.addPlayers(players, cont);
+	
+>>>>>>> e97411c061951dab8f4b21203d6271e8a7ed3496
 		addLadders(ladders);
+		addSnakes(snakes);
 	}
 	
+	private void addSnakes(int snakes) {
+
+		if(snakes==0) {
+			return;
+		}else {
+
+			int i1 = ThreadLocalRandom.current().nextInt(0, rows);
+			int i2 = ThreadLocalRandom.current().nextInt(0, rows);
+			int j1 = ThreadLocalRandom.current().nextInt(0, columns);
+			int j2 = ThreadLocalRandom.current().nextInt(0, columns);
+			Square square1= searchSquare(i1,j1, zeroSquare);
+			Square square2= searchSquare(i2,j2, zeroSquare);
+
+			if(i1==i2 || square1==finalSquare || square2==finalSquare || square1.getLadder()!=0 || square2.getLadder()!=0 || square1.getSnake()!=0 || square2.getSnake()!=0) {
+				addSnakes(snakes);
+			}else {
+				square1.setSnake((char) ('A'+(snakes-1)));
+				square2.setSnake((char) ('A'+(snakes-1)));
+				
+				addSnakes(snakes-1);
+
+			}			
+
+		}
+
+	}
+	
+	
+
 	private void addLadders(int ladders) {
 		
 		if(ladders==0) {
 			return;
 		}else {
 			
-			int i1 = ThreadLocalRandom.current().nextInt(0, rows-1);
-			int i2 = ThreadLocalRandom.current().nextInt(0, rows-1);
-			int j1 = ThreadLocalRandom.current().nextInt(0, columns-1);
-			int j2 = ThreadLocalRandom.current().nextInt(0, columns-1);
-			if(i1==i2 || ((i1==rows-1) && j1==0) || ((i2==rows-1) && j2==0)) {
+			int i1 = ThreadLocalRandom.current().nextInt(0, rows);
+			int i2 = ThreadLocalRandom.current().nextInt(0, rows);
+			int j1 = ThreadLocalRandom.current().nextInt(0, columns);
+			int j2 = ThreadLocalRandom.current().nextInt(0, columns);
+			
+			Square square1= searchSquare(i1,j1, zeroSquare);
+			Square square2= searchSquare(i2,j2, zeroSquare);
+			if(i1==i2 || square1==firstSquare || square2==firstSquare || square1.getLadder()!=0 || square2.getLadder()!=0) {
 				addLadders(ladders);
 			}else {
-				addLadders(i1,j1, ladders);
-				addLadders(i2,j2, ladders);
+				square1.setLadder(ladders);
+				square2.setLadder(ladders);
+
 				addLadders(ladders-1);
 
 			}			
 
 		}
+<<<<<<< HEAD
+=======
+		
+
+>>>>>>> e97411c061951dab8f4b21203d6271e8a7ed3496
 	}
 	
-	private void addLadders(int i, int j, int ladder) {
-		Square square= searchSquare(i,j, zeroSquare);
-		square.setLadder(ladder);
-	}
-
+	
 	private Square searchSquare(int i, int j, Square square) {
 		
 		if(i==square.getRow() && j==square.getCol()) {

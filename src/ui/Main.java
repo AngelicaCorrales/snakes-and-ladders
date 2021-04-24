@@ -8,12 +8,13 @@ import java.io.OutputStreamWriter;
 
 
 import model.Game;
-
-/*import model.Grid;
+/*
+import model.Grid;
 
 public class Main {
 
 	public static void main(String[] args) {
+<<<<<<< HEAD
 		//Grid grid =new Grid(null, 0, 0, 5, 4);
 		//System.out.println(grid);
 		//System.out.println(grid.getFinalSquare());
@@ -22,6 +23,16 @@ public class Main {
 		
 	}
 }
+=======
+
+		Grid grid =new Grid(null, 2, 2, 5, 4);
+
+		//System.out.println(grid);
+
+	}
+}
+
+>>>>>>> e97411c061951dab8f4b21203d6271e8a7ed3496
 */
 
 public class Main {
