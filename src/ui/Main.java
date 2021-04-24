@@ -23,11 +23,13 @@ public class Main {
 		game.startGame(5, 4, 2, 2, "#*");
 		System.out.println(game.getGrid());
 		System.out.println(game.getGrid().toString2());
-		for(int i=0;i<=10;i++) {
-			game.throwDie();
+		while(!game.endGame()) {
+			System.out.println(game.throwDie());
 			System.out.println(game.getGrid().toString2());
-			game.throwDie();
-			System.out.println(game.getGrid().toString2());
+			if(game.endGame()) {
+				game.addWinner("Ganador");
+				System.out.println(game.winner());// era un metodo que devolvía el winnerRoot
+			}
 		}
 		
 

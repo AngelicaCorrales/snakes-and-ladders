@@ -7,6 +7,8 @@ public class Game {
 	private Grid grid;
 	private String players;
 	private int playerPosition;
+	
+	private Winner winnerRoot;
 
 	public Game() {
 		playerPosition = 0;
@@ -132,8 +134,11 @@ public class Game {
 
 	public String throwDie() {
 		int num = ThreadLocalRandom.current().nextInt(1, 7);
-		movePlayer(num, returnPlayer());
+		grid.movePlayer(num, returnPlayer());
 		String msg = "El jugador "+returnPlayer()+" ha lanzado el dado y obtuvo el puntaje"+" "+num;
+		if(grid.getWinner()!=null) {
+			msg+="\n	El jugador "+grid.getWinner().getSymbol()+" ha ganado el juego, con "+ grid.getWinner().getMovements()+" movimientos";
+		}
 		playerPosition+=1;
 		return msg;
 	}
@@ -148,9 +153,42 @@ public class Game {
 		}
 		return p;
 	}
+		
+	public boolean endGame() {
+		boolean end=false;
+		if(grid.getWinner()!=null) {
+			end=true;
+		}
+		return end;
+	}
 	
-	public void movePlayer(int num, char player) {
-		grid.movePlayer(num, player);
+	public void addWinner(String nickname) {
+		int score=grid.getWinner().getMovements()*grid.getRows()+grid.getColumns();
+		Winner winner=new Winner(grid.getWinner().getSymbol(), nickname, score);
+		if(winnerRoot==null) {
+			winnerRoot=winner;
+		}else {
+			addWinner(winnerRoot, winner);
+		}
+	}
+	
+	private void addWinner(Winner current, Winner newWinner) {
+		if(newWinner.getScore()<=current.getScore()){
+			if(current.getRight()==null){
+				current.setRight(newWinner);
+				newWinner.setParent(current);
+			}else{
+				addWinner(current.getRight(),newWinner);
+			}
+		}else{
+			if(current.getLeft()==null){
+				current.setLeft(newWinner);
+				newWinner.setParent(current);
+			}else{
+				addWinner(current.getLeft(),newWinner);
+			}	
+			
+		}	
 	}
 	
 	public Grid getGrid() {

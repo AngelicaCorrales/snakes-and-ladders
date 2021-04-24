@@ -3,15 +3,16 @@ package model;
 public class Winner {
 	
 	private String nickname;
-	private String symbol;
+	private char symbol;
 	private int score;
 	
 	private Winner left;
 	private Winner right;
+	private Winner parent;
 	
 	
 
-	public Winner(String symbol, String nickname, int score) {
+	public Winner(char symbol, String nickname, int score) {
 		this.symbol=symbol;
 		this.nickname=nickname;
 		this.score=score;
@@ -21,7 +22,7 @@ public class Winner {
 		return nickname;
 	}
 
-	public String getSymbol() {
+	public char getSymbol() {
 		return symbol;
 	}
 
@@ -45,4 +46,12 @@ public class Winner {
 		this.right = right;
 	}
 
+	public Winner getParent() {
+		return parent;
+	}
+
+	public void setParent(Winner parent) {
+		this.parent = parent;
+	}
+	
 }
