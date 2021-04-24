@@ -55,5 +55,5 @@ public class Winner {
 	public void setParent(Winner parent) {
 		this.parent = parent;
 	}
-
+	
 }
