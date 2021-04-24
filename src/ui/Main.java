@@ -147,7 +147,7 @@ public class Main {
 						int cont = 0;
 						int times = 0;
 						boolean correct = verifySymbols(players, cont, times); 
-						if(correct==true) {
+						if(correct==false) {
 							verifyData(rows, cols, snakes, ladders, players);
 						}else {
 							bw.write("Los signos de los jugadores no coinciden con los predeterminados (* ! O X % $ # + &) o los simbolos de los jugadores se encuentran repetidos");
@@ -230,11 +230,8 @@ public class Main {
 				return correct;
 			}else {
 				correct = searchPlayer(players, s, c, times);
-				System.out.println("\n"+correct);
 				cont+=1;
-				System.out.println("\ncont = "+cont+"\n");
 				if(correct==false && cont!=players.length()) {
-					System.out.println("repite");
 					verifySymbols(players,cont, times);
 				}
 			}
@@ -246,10 +243,10 @@ public class Main {
 		boolean find = false;
 		if(times<=1 && cont!=p.length()) {
 			if(s!=p.charAt(cont)) {
-				searchPlayer(p, s, (cont+=1), times);
+				find = searchPlayer(p, s, (cont+=1), times);
 			}else {
-				System.out.println("\n"+times+"\n"+cont);
-				searchPlayer(p, s, (cont+=1), times);
+				times+=1;
+				find = searchPlayer(p, s, (cont+=1), times);
 			}
 		}else if(times==2) {
 			find = true;
