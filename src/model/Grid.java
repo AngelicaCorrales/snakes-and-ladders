@@ -12,12 +12,9 @@ public class Grid {
 	public Grid(String players, int snakes, int ladders, int rows, int columns) {
 		this.rows = rows;
 		this.columns = columns;
-		
 		createGrid();
-
 		int cont = 0;
 		firstSquare.addPlayers(players, cont);
-	
 		addLadders(ladders);
 		addSnakes(snakes);
 	}
@@ -40,17 +37,13 @@ public class Grid {
 			}else {
 				square1.setSnake((char) ('A'+(snakes-1)));
 				square2.setSnake((char) ('A'+(snakes-1)));
-				
 				addSnakes(snakes-1);
-
 			}			
 
 		}
 
 	}
 	
-	
-
 	private void addLadders(int ladders) {
 		
 		if(ladders==0) {
@@ -71,12 +64,8 @@ public class Grid {
 				square2.setLadder(ladders);
 
 				addLadders(ladders-1);
-
-			}			
-
+			}
 		}
-		
-
 	}
 	
 	
@@ -134,8 +123,6 @@ public class Grid {
 	private void createCol(int i, int j, Square prev, Square rowDown) {
 		if(j<columns) {
 			Square current = new Square(i, j);
-			
-			
 			current.setPrev(prev);
 			prev.setNext(current);
 			
@@ -147,7 +134,6 @@ public class Grid {
 			if(rows%2!=0) {//NUMERO DE CASILLA FILA
 				if(i==0 && j==(columns-1)) {
 					finalSquare=current;
-					
 				}
 
 				if((i)%2!=0) {
@@ -165,9 +151,6 @@ public class Grid {
 					current.setNum(prev.getNum()+1);
 				}
 			}
-			
-			
-			
 			createCol(i,j+1,current,rowDown);
 		}
 	}
@@ -196,14 +179,31 @@ public class Grid {
 		return msg;
 	}
 	
-	public String toString2() {
-		String msg = "";
-		
-		return msg;
-	}
 	public Square getFinalSquare() {
 		return finalSquare;
 	}
-
 	
+	public String toString2() {
+		String msg;
+		msg = toStringRow2(zeroSquare);
+		return msg;
+	}
+	
+	private String toStringRow2(Square firstRow) {
+		String msg = "";
+		if(firstRow!=null) {
+			msg = toStringCol2(firstRow) + "\n";
+			msg += toStringRow2(firstRow.getDown());
+		}
+		return msg;
+	}
+
+	private String toStringCol2(Square current) {
+		String msg = "";
+		if(current!=null) {
+			msg = current.toString2();
+			msg += toStringCol2(current.getNext());
+		}
+		return msg;
+	}
 }

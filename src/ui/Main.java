@@ -14,6 +14,16 @@ import model.Grid;
 public class Main {
 
 	public static void main(String[] args) {
+<<<<<<< HEAD
+		//Grid grid =new Grid(null, 0, 0, 5, 4);
+		//System.out.println(grid);
+		//System.out.println(grid.getFinalSquare());
+		Grid grid =new Grid(null, 0, 2, 5, 4);
+		System.out.println(grid);
+		
+	}
+}
+=======
 
 		Grid grid =new Grid(null, 2, 2, 5, 4);
 
@@ -22,12 +32,13 @@ public class Main {
 	}
 }
 
+>>>>>>> e97411c061951dab8f4b21203d6271e8a7ed3496
 */
 
 public class Main {
 
-	private static BufferedReader br;
-	private static BufferedWriter bw;
+	public BufferedReader br;
+	public BufferedWriter bw;
 	private Game mainGame;
 
 	public Main(){
@@ -37,19 +48,21 @@ public class Main {
 	}
 
 	public static void main(String[] args) throws IOException {
-		bw.write("*******************************************************************************************************************************************************************");
-		bw.write("\n                                                             ¡Bienvenido a Snakes and Ladders!                                                                     ");
-		bw.write("\n*******************************************************************************************************************************************************************");
-		Main objMain = new Main(); 
-		correctOption(objMain,objMain.menu());
-		bw.flush();
-		br.close();
-		bw.close();
+		Main objMain = new Main();
+		objMain.bw.write("\n*******************************************************************************************************************************************************************");
+		objMain.bw.flush();
+		objMain.bw.write("\n                                                             ¡Bienvenido a Snakes and Ladders!                                                                     ");
+		objMain.bw.flush();
+		objMain.bw.write("\n*******************************************************************************************************************************************************************"); 
+		objMain.bw.flush();
+		objMain.correctOption(objMain.menu());
+		objMain.br.close();
+		objMain.bw.close();
 	}
 
-	public static void correctOption(Main m, int op) throws IOException {
+	public void correctOption(int op) throws IOException {
 		if(op!=3) {
-			correctOption(m, m.menu());
+			correctOption(menu());
 		}
 	}
 
@@ -58,13 +71,14 @@ public class Main {
 		boolean menu = true;
 		try {
 			bw.write(
-					"\n**********************************************************************************\n"+
-							"                         Seleccione una opcion para continuar                         "+
-							"\n**********************************************************************************\n"+
+					"\n*******************************************************************************************************************************************************************\n"+
+							"                                                            Seleccione una opcion para continuar                         "+
+							"\n*******************************************************************************************************************************************************************\n"+
 							"      1. Comenzar juego\n"+
 							"      2. Ver el tablero de posiciones\n"+
 							"      3. Finalizar el programa\n"
 					);
+			bw.flush();
 			option = Integer.parseInt(br.readLine());
 			switch(option){
 			case 1:
@@ -76,11 +90,13 @@ public class Main {
 				menu = false;
 				break;
 			case 3:
-				bw.write("\n**********************************************************************************\n"+"Gracias por jugar"+"\n**********************************************************************************\n");
+				bw.write("\n*******************************************************************************************************************************************************************\n"+"Gracias por jugar"+"\n*******************************************************************************************************************************************************************\n");
+				bw.flush();
 				menu = false;
 				break;
 			default:
 				bw.write("Ingrese una opcion valida");
+				bw.flush();
 				break;	
 			}		
 			if(menu==true) {
@@ -88,17 +104,21 @@ public class Main {
 			}
 		}catch(NumberFormatException num) {
 			bw.write("Debe ingresar un numero entero que corresponda con las opciones presentadas.");
+			bw.flush();
 		}
 		return option;
 	}
 
 	public void startGame() throws IOException {
-		bw.write("\nPor favor ingrese el tamaño del tablero seguido de el numero de serpientes, escaleras y jugadores. Puede incluir los simbolos de los jugadores si lo desea, de lo contrario seran asignados aleatoriamente.");
+		bw.write("\nPor favor ingrese el tamaño del tablero seguido de el numero de serpientes, escaleras y jugadores. Puede incluir los simbolos de los jugadores si lo desea, de lo contrario seran asignados aleatoriamente.\n");
+		bw.flush();
 		String line = br.readLine();
-		if(line!=null && !line.equals("")) {
-			String[] info = br.readLine().split(" ");
+		if(line!=null) {
+			line = line.trim();
+			String[] info = line.split(" ");
 			if(info.length!=5) {
-				bw.write("Debe ingresar toda la informacion solicitada");
+				bw.write("Debe ingresar toda la informacion solicitada correctamente");
+				bw.flush();
 				startGame();
 			}else {
 				int rows = Integer.parseInt(info[0]);
@@ -111,13 +131,18 @@ public class Main {
 					p = Integer.parseInt(players);
 					if(p>9) {
 						bw.write("Lo sentimos, esta version del juego no esta disponible para mas de 9 jugadores");
+						bw.flush();
 						startGame();
-					}else {
-						verifyData(rows, cols, snakes, ladders, players);
+					}else if(p<=0) {
+						bw.write("El numero de jugadores no puede ser cero");
+						bw.flush();
+						startGame();
 					}
+					verifyData(rows, cols, snakes, ladders, players);
 				}catch(NumberFormatException num) {
 					if(players.length()>9) {
 						bw.write("Lo sentimos, esta version del juego no esta disponible para mas de 9 jugadores");
+						bw.flush();
 						startGame();
 					}else {
 						int cont = 0;
@@ -126,10 +151,58 @@ public class Main {
 							verifyData(rows, cols, snakes, ladders, players);
 						}else {
 							bw.write("Los signos de los jugadores no coinciden con los predeterminados (* ! O X % $ # + &) o los simbolos de los jugadores se encuentran repetidos");
+							bw.flush();
 							startGame();
 						}
 					}
 				}
+			}
+			showGrid();
+			bw.write("Presione enter para continuar");
+			bw.flush();
+			line = br.readLine();
+			if(line!=null) {
+				showGameBoard();
+			}
+		}
+	}
+
+	private void showGameBoard() throws IOException {
+		bw.write("\n"+mainGame.getGrid().toString2()+"\n");
+		bw.write("Presione enter para continuar o digite los comandos num, simul o menu si lo desea.\n");
+		bw.flush();
+		String line = br.readLine();
+		if(line!=null) {
+			if(!line.equals("num") && !line.equals("simul") && !line.equals("menu")) {
+				String msg = mainGame.throwDie();
+				bw.write(msg);
+				bw.flush();
+				showGameBoard();
+			}else if(line.equals("num")) {
+				bw.write("\nPresione enter para continuar");
+				bw.flush();
+				line = br.readLine();
+				if(line!=null) {
+					showGrid();
+					showGameBoard();
+				}
+			}else if(line.equals("simul")){
+				bw.write("\nPresione enter para continuar");
+				bw.flush();
+				line = br.readLine();
+				if(line!=null) {
+					bw.write("REVISAAAAAR FUNCIOOON");
+					bw.flush();
+				}
+			}else if(line.equals("menu")) {
+				bw.write("\nPresione enter para continuar");
+				bw.flush();
+				line = br.readLine();
+				if(line!=null) {
+					menu();
+				}
+			}else {
+				showGameBoard();
 			}
 		}
 	}
@@ -149,7 +222,7 @@ public class Main {
 		char symbol8 = '+';
 		char symbol9 = '&';
 		if(cont!=players.length()) {
-			if(s!=symbol1 || s!=symbol2 || s!=symbol3 || s!=symbol4 || s!=symbol5 || s!=symbol6 || s!=symbol7 || s!=symbol8 || s!=symbol9) {
+			if(s!=symbol1 && s!=symbol2 && s!=symbol3 && s!=symbol4 && s!=symbol5 && s!=symbol6 && s!=symbol7 && s!=symbol8 && s!=symbol9) {
 				return correct;
 			}else {
 				correct = searchPlayer(players, s, c, times);
@@ -180,8 +253,10 @@ public class Main {
 		if(rows<=0 || cols<=0 || snakes<=0 || ladders<=0 || (((snakes*2)+(ladders*2))>(rows*cols)) ) {
 			if(((snakes*2)+(ladders*2))>(rows*cols)){
 				bw.write("De acuerdo con las dimensiones del tablero ingresadas no es posible colocar el numero de serpientes o escaleras digitado");
+				bw.flush();
 			}else {
 				bw.write("Las filas, columnas, serpientes o escaleras no pueden ser cero");
+				bw.flush();
 			}
 			startGame();
 		}else {
@@ -191,6 +266,10 @@ public class Main {
 
 	public void showPositionsBoard() {
 
+	}
+	
+	public void showGrid() throws IOException {
+		bw.write("\n"+mainGame.getGrid().toString()+"\n");
 	}
 }
 

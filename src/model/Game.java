@@ -5,27 +5,32 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Game {
 
 	private Grid grid;
+	private String players;
+	private int playerPosition;
 
 	public Game() {
-
+		playerPosition = 0;
+		players = "";
 	}
 
-	public void startGame(int rows, int cols, int snakes, int ladders, String players) {
+	public void startGame(int rows, int cols, int snakes, int ladders, String p) {
 		int playersN = -1;
 		int cont = 0;
-		String p = "";
+		String py = "";
 		String playersS = "";
 		try {
 			playersN = Integer.parseInt(players);
 		}catch(NumberFormatException num) {
-			playersS = players;
+			playersS = p;
 		}
 		if(playersN!=-1) {
-			String playersA = assignSymbol(p, playersN, cont);
+			String playersA = assignSymbol(py, playersN, cont);
 			grid = new Grid(playersA, snakes, ladders, rows, cols);
+			players = playersA;
 		}
 		if(!playersS.equals("")) {
 			grid = new Grid(playersS, snakes, ladders, rows, cols);
+			players = playersS;
 		}
 	}
 
@@ -121,19 +126,50 @@ public class Game {
 		return find;
 	}
 
-	public void moveGame() {
+	public String throwDie() {
+		int num = ThreadLocalRandom.current().nextInt(1, 7);
+		movePlayers(num);
+		String msg = "El jugador "+returnPlayer()+" ha lanzado el dado y obtuvo el puntaje"+" "+num;
+		playerPosition+=1;
+		return msg;
+	}
+	
+	private char returnPlayer() {
+		char p = ' ';
+		if(playerPosition!=players.length()) {
+			p = players.charAt(playerPosition);
+		}else {
+			setPlayerPosition(0);
+			p = players.charAt(playerPosition);
+		}
+		return p;
+	}
+	
+	public void movePlayers(int num) {
 
 	}
-
-	public void throwDie() {
-
-	}
-
+	
 	public Grid getGrid() {
 		return grid;
 	}
 
 	public void setGrid(Grid grid) {
 		this.grid = grid;
+	}
+
+	public String getPlayers() {
+		return players;
+	}
+
+	public void setPlayers(String players) {
+		this.players = players;
+	}
+
+	public int getPlayerPosition() {
+		return playerPosition;
+	}
+
+	public void setPlayerPosition(int playerPosition) {
+		this.playerPosition = playerPosition;
 	}
 }

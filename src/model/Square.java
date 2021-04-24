@@ -155,4 +155,12 @@ public class Square {
 		}
 		return "["+num+ladderString+snake+"]";
 	}
+	
+	public String toString2() {
+		String ladderString="";
+		if(ladder!=0) {
+			ladderString=String.valueOf(ladder);
+		}
+		return "["+ladderString+snake+"]";
+	}
 }
