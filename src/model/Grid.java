@@ -18,6 +18,21 @@ public class Grid {
 		addLadders(ladders);
 		addSnakes(snakes);
 	}
+	public int getRows() {
+		return rows;
+	}
+	
+	public int getColumns() {
+		return columns;
+	}
+	
+	public Player getWinner() {
+		Player winner=null;
+		if(finalSquare.getFirstPlayer()!=null) {
+			winner=finalSquare.getFirstPlayer();
+		}
+		return winner;
+	}
 	
 	private void addSnakes(int snakes) {
 
