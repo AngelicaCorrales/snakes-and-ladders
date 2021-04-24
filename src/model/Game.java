@@ -218,6 +218,22 @@ public class Game {
 		}	
 	}
 	
+	public String listWinnersInorder() {
+		String list="";
+		list+=listWinnersInorder(winnerRoot,list);
+		return list;
+	}
+	
+	public String listWinnersInorder(Winner current, String list) {
+		
+		if(current!=null) {
+			list+=listWinnersInorder(current.getLeft(),list);
+			list+=current.toString();
+			list+=listWinnersInorder(current.getRight(),list);
+		}
+		return list;
+	}
+	
 	public Grid getGrid() {
 		return grid;
 	}
@@ -252,5 +268,9 @@ public class Game {
 
 	public void setWinnerRoot(Winner winnerRoot) {
 		this.winnerRoot = winnerRoot;
+	}
+	
+	public Winner winner() {
+		return winnerRoot;
 	}
 }
