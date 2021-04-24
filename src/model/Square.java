@@ -7,6 +7,9 @@ public class Square {
 	private int col;
 	private int row;
 	private Player firstPlayer;
+	private Player finalPlayer;
+
+	
 
 	private Square next;
 	private Square prev;
@@ -18,13 +21,42 @@ public class Square {
 		this.row = row;
 	}
 	
+	public void addPlayer(Player player) {
+		//AL INICIO DE LA LISTA
+		player.setNext(firstPlayer);
+		if(firstPlayer==null) {
+			finalPlayer=player;
+		}
+		if(firstPlayer.getNext()==null) {
+			finalPlayer=firstPlayer;
+		}
+		
+		firstPlayer=player;
+		
+	}
+	
+	public void removePlayer(Player player) {
+		if(player==finalPlayer) {
+			Player prev=player.getPrev();
+			prev.setNext(null);
+			finalPlayer=prev;
+		}
+	}
+
+	public void movePlayer(Square square, Player player) {
+		//PASO POR PARAMETRO LA CASILLA EN LA QUE SE VA A UBICAR EL JUGADOR
+		removePlayer(player);
+		square.addPlayer(player);
+		player.setMovements(player.getMovements()+1);
+	}
+
 	public void addPlayers(String players, int cont) {
 		if(cont!=players.length()) {
-			firstPlayer = new Player(players.charAt(cont), 0);
+			Player player = new Player(players.charAt(cont), 0);
+			addPlayer(player);
 			cont+=1;
-			if(cont!=players.length()) {
-				addPlayers(players, cont);
-			}
+			addPlayers(players, cont);
+			
 		}
 	}
 
@@ -90,6 +122,14 @@ public class Square {
 
 	public void setFirstPlayer(Player firstPlayer) {
 		this.firstPlayer = firstPlayer;
+	}
+	
+	public Player getFinalPlayer() {
+		return finalPlayer;
+	}
+
+	public void setFinalPlayer(Player finalPlayer) {
+		this.finalPlayer = finalPlayer;
 	}
 
 	public int getCol() {

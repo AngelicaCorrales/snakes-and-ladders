@@ -17,7 +17,7 @@ public class Main {
 
 		Grid grid =new Grid(null, 2, 2, 5, 4);
 
-		//System.out.println(grid);
+		System.out.println(grid);
 
 	}
 }
