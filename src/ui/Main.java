@@ -15,10 +15,19 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		Grid grid =new Grid("#*", 2, 2, 5, 4);
+		//Grid grid =new Grid("#*", 2, 2, 5, 4);
 
-		System.out.println(grid);
-		System.out.println(grid.toString2());
+		//System.out.println(grid);
+		//System.out.println(grid.toString2());
+		Game game=new Game();
+		game.startGame(5, 4, 2, 2, "#*");
+		System.out.println(game.getGrid());
+		System.out.println(game.getGrid().toString2());
+		game.throwDie();
+		System.out.println(game.getGrid().toString2());
+		game.throwDie();
+		System.out.println(game.getGrid().toString2());
+		
 
 	}
 }

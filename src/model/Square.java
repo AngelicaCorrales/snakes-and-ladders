@@ -24,8 +24,11 @@ public class Square {
 	public void addPlayer(Player player) {
 		//AL INICIO DE LA LISTA
 		player.setNext(firstPlayer);
+		
 		if(firstPlayer==null) {
 			finalPlayer=player;
+		}else {
+			firstPlayer.setPrev(player);
 		}
 		firstPlayer=player;
 		if(firstPlayer.getNext()==null) {
@@ -36,7 +39,10 @@ public class Square {
 	public void removePlayer(Player player) {
 		if(player==finalPlayer) {
 			Player prev=player.getPrev();
-			prev.setNext(null);
+			if(prev!=null) {
+				prev.setNext(null);
+			}
+			player.setPrev(null);
 			finalPlayer=prev;
 		}
 	}
@@ -164,16 +170,18 @@ public class Square {
 	
 	public String playerString(Player player) {
 		String s="";
-		if(player.getNext()==null){
+		if(player!=null) {
 			s+=String.valueOf(player.getSymbol());
-		}else {
-			s+=playerString(player.getNext());
+			if(player.getPrev()!=null){
+						
+				s+=playerString(player.getPrev());
+			}
 		}
 		return s;
 	}
 	
 	public String playerString() {
-		return playerString(firstPlayer);
+		return playerString(finalPlayer);
 	}
 
 	public Player searchPlayer(char player) {
