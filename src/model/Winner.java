@@ -44,9 +44,9 @@ public class Winner {
 		this.right = right;
 	}
 	
-	/*public String toString() {
-		
-	}*/
+	public String toString() {
+		return symbol+nickname+score;
+	}
 
 	public Winner getParent() {
 		return parent;

@@ -52,8 +52,10 @@ public class Grid {
 			}else {
 				if(i1<i2) {
 					square1.setFinalSnake(square2);
+					System.out.println("aaai1<i2"+square1.getFinalSnake());
 				}else {
 					square2.setFinalSnake(square1);
+					System.out.println("aaai2<i1"+square2.getFinalSnake());
 				}
 				square1.setSnake((char) ('A'+(snakes-1)));
 				square2.setSnake((char) ('A'+(snakes-1)));
@@ -234,6 +236,8 @@ public class Grid {
 		Square to= searchSquareByNumber((num+from.getNum()), zeroSquare,zeroSquare.getDown());
 		if(to.getFinalSnake()!=null) {
 			to=to.getFinalSnake();
+			System.out.println("entro snake");
+			System.out.println(to);
 		}
 		if(to.getFinalLadder()!=null) {
 			to=to.getFinalLadder();
