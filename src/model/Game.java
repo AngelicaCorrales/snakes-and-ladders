@@ -1,9 +1,18 @@
 package model;
 
+/*import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+*/
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Game {
-
+	
+	public final static String SAVE_PATH_FILE = "data/winners.ackl";
 	private Grid grid;
 	private String players;
 	private int playerPosition;
@@ -12,6 +21,25 @@ public class Game {
 		playerPosition = 0;
 		players = "";
 	}
+	
+	/*private void saveWinners() throws IOException {
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(SAVE_PATH_FILE));
+	    oos.writeObject(winnerRoot);
+	    oos.close();
+	}*/
+	
+	/*@SuppressWarnings("unchecked")
+	public boolean loadWinners() throws IOException, ClassNotFoundException {
+		File f = new File(SAVE_PATH_FILE);
+		boolean loaded = false;
+		 if(f.exists()){
+			 ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
+			 winnerRoot = (winnerRoot)ois.readObject();
+			 ois.close();
+			 loaded = true;
+		 }
+		 return loaded;
+	}*/
 
 	public void startGame(int rows, int cols, int snakes, int ladders, String p) {
 		int playersN = -1;
@@ -175,5 +203,9 @@ public class Game {
 
 	public void setPlayerPosition(int playerPosition) {
 		this.playerPosition = playerPosition;
+	}
+	
+	public void showWinners() {
+		
 	}
 }

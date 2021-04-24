@@ -9,8 +9,6 @@ public class Winner {
 	private Winner left;
 	private Winner right;
 	
-	
-
 	public Winner(String symbol, String nickname, int score) {
 		this.symbol=symbol;
 		this.nickname=nickname;
@@ -44,5 +42,8 @@ public class Winner {
 	public void setRight(Winner right) {
 		this.right = right;
 	}
-
+	
+	/*public String toString() {
+		
+	}*/
 }

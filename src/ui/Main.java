@@ -5,8 +5,6 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-
-
 import model.Game;
 
 /*import model.Grid;
@@ -46,9 +44,18 @@ public class Main {
 		br = new BufferedReader(new InputStreamReader(System.in));
 		bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		mainGame = new Game();
+		/*boolean loadData;
+		try {
+			loadData = mainGame.loadWinners();
+		} catch (ClassNotFoundException | IOException e) {
+			loadData = false;
+			if(!loadData) {
+				bw.write("Error al cargar los ganadores del juego");
+			}
+		}*/
 	}
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, InterruptedException {
 		Main objMain = new Main();
 		objMain.bw.write("\n*******************************************************************************************************************************************************************");
 		objMain.bw.flush();
@@ -61,13 +68,13 @@ public class Main {
 		objMain.bw.close();
 	}
 
-	public void correctOption(int op) throws IOException {
+	public void correctOption(int op) throws IOException, InterruptedException {
 		if(op!=3) {
 			correctOption(menu());
 		}
 	}
 
-	public int menu() throws IOException{
+	public int menu() throws IOException, InterruptedException{
 		int option = 0;
 		boolean menu = true;
 		try {
@@ -110,7 +117,7 @@ public class Main {
 		return option;
 	}
 
-	public void startGame() throws IOException {
+	public void startGame() throws IOException, InterruptedException {
 		bw.write("\nPor favor ingrese el tamaño del tablero seguido de el numero de serpientes, escaleras y jugadores. Puede incluir los simbolos de los jugadores si lo desea, de lo contrario seran asignados aleatoriamente.\n");
 		bw.flush();
 		String line = br.readLine();
@@ -169,7 +176,7 @@ public class Main {
 		}
 	}
 
-	private void showGameBoard() throws IOException {
+	private void showGameBoard() throws IOException, InterruptedException {
 		bw.write("\n"+mainGame.getGrid().toString2()+"\n");
 		bw.write("Presione enter para continuar o digite los comandos num, simul o menu si lo desea.\n");
 		bw.flush();
@@ -198,8 +205,7 @@ public class Main {
 				bw.flush();
 				line = br.readLine();
 				if(line!=null) {
-					bw.write("REVISAAAAAR FUNCIOOON");
-					bw.flush();
+					showSimul();
 				}
 			}else if(line.equalsIgnoreCase("menu")) {
 				bw.write("\nPresione enter para continuar");
@@ -256,7 +262,7 @@ public class Main {
 		return find;
 	}
 
-	private void verifyData(int rows, int cols, int snakes, int ladders, String players) throws IOException {
+	private void verifyData(int rows, int cols, int snakes, int ladders, String players) throws IOException, InterruptedException {
 		if(rows<=0 || cols<=0 || snakes<=0 || ladders<=0 || (((snakes*2)+(ladders*2))>(rows*cols)) ) {
 			if(((snakes*2)+(ladders*2))>(rows*cols)){
 				bw.write("De acuerdo con las dimensiones del tablero ingresadas no es posible colocar el numero de serpientes o escaleras digitado");
@@ -271,12 +277,27 @@ public class Main {
 		}
 	}
 
-	public void showPositionsBoard() {
-
+	public void showPositionsBoard() throws IOException {
+		bw.write("\n                                 **************************************************************************************************");
+		bw.write("\n                                                                   Tablero de posiciones                                           ");
+		bw.write("\n                                 **************************************************************************************************");
+		bw.write("\n                                             Nickname        *            Simbolo               *               Puntaje            ");
+		bw.write("\n                                 **************************************************************************************************");
+		//bw.write();
 	}
 	
 	public void showGrid() throws IOException {
 		bw.write("\n"+mainGame.getGrid().toString()+"\n");
+	}
+	
+	public void showSimul() throws IOException, InterruptedException {
+		String msg = mainGame.throwDie();
+		bw.write(msg);
+		bw.flush();
+		bw.write("\n"+mainGame.getGrid().toString2()+"\n");
+		bw.flush();
+		Thread.sleep(2000);
+		showSimul();
 	}
 }
 
