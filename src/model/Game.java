@@ -187,8 +187,9 @@ public class Game {
 		return end;
 	}
 	
+
 	public void addWinner(String nickname) throws IOException {
-		int score=grid.getWinner().getMovements()*grid.getRows()+grid.getColumns();
+		int score=grid.getWinner().getMovements()*grid.getRows()*grid.getColumns();
 		Winner winner=new Winner(grid.getWinner().getSymbol(), nickname, score);
 		if(winnerRoot==null) {
 			setWinnerRoot(winner);
@@ -266,7 +267,5 @@ public class Game {
 		this.winnerRoot = winnerRoot;
 	}
 	
-	public Winner winner() {
-		return winnerRoot;
-	}
+	
 }

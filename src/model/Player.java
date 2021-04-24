@@ -46,4 +46,5 @@ public class Player {
 	public void setPrev(Player prev) {
 		this.prev = prev;
 	}
+	
 }
