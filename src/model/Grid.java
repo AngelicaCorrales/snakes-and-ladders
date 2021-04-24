@@ -14,12 +14,8 @@ public class Grid {
 		this.columns = columns;
 		//pendiente escaleras y serpientes
 		createGrid();
-<<<<<<< HEAD
 		int cont = 0;
 		firstSquare.addPlayers(players, cont);
-=======
-		
-		
 		addLadders(ladders);
 	}
 	
@@ -43,8 +39,6 @@ public class Grid {
 			}			
 
 		}
-		
->>>>>>> 933d929f7b6b7be2f704182612374765f03ac068
 	}
 	
 	private void addLadders(int i, int j, int ladder) {
