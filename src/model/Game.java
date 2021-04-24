@@ -1,13 +1,11 @@
 package model;
 
-/*import java.io.File;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-*/
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Game {
@@ -24,24 +22,23 @@ public class Game {
 		players = "";
 	}
 	
-	/*private void saveWinners() throws IOException {
+	private void saveWinners() throws IOException {
 		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(SAVE_PATH_FILE));
 	    oos.writeObject(winnerRoot);
 	    oos.close();
-	}*/
+	}
 	
-	/*@SuppressWarnings("unchecked")
 	public boolean loadWinners() throws IOException, ClassNotFoundException {
 		File f = new File(SAVE_PATH_FILE);
 		boolean loaded = false;
 		 if(f.exists()){
 			 ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
-			 winnerRoot = (winnerRoot)ois.readObject();
+			 winnerRoot = (Winner)ois.readObject();
 			 ois.close();
 			 loaded = true;
 		 }
 		 return loaded;
-	}*/
+	}
 
 	public void startGame(int rows, int cols, int snakes, int ladders, String p) {
 		int playersN = -1;
@@ -163,9 +160,9 @@ public class Game {
 	public String throwDie() {
 		int num = ThreadLocalRandom.current().nextInt(1, 7);
 		grid.movePlayer(num, returnPlayer());
-		String msg = "El jugador "+returnPlayer()+" ha lanzado el dado y obtuvo el puntaje"+" "+num;
+		String msg = "\nEl jugador "+returnPlayer()+" ha lanzado el dado y obtuvo el puntaje"+" "+num;
 		if(grid.getWinner()!=null) {
-			msg+="\n	El jugador "+grid.getWinner().getSymbol()+" ha ganado el juego, con "+ grid.getWinner().getMovements()+" movimientos";
+			msg+="\nEl jugador "+grid.getWinner().getSymbol()+" ha ganado el juego, con "+ grid.getWinner().getMovements()+" movimientos";
 		}
 		playerPosition+=1;
 		return msg;
@@ -190,13 +187,16 @@ public class Game {
 		return end;
 	}
 	
-	public void addWinner(String nickname) {
+
+	public void addWinner(String nickname) throws IOException {
 		int score=grid.getWinner().getMovements()*grid.getRows()*grid.getColumns();
 		Winner winner=new Winner(grid.getWinner().getSymbol(), nickname, score);
 		if(winnerRoot==null) {
-			winnerRoot=winner;
+			setWinnerRoot(winner);
+			saveWinners();
 		}else {
 			addWinner(winnerRoot, winner);
+			saveWinners();
 		}
 	}
 	
@@ -261,6 +261,14 @@ public class Game {
 	
 	public void showWinners() {
 		
+	}
+
+	public Winner getWinnerRoot() {
+		return winnerRoot;
+	}
+
+	public void setWinnerRoot(Winner winnerRoot) {
+		this.winnerRoot = winnerRoot;
 	}
 	
 	

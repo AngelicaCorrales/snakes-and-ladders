@@ -1,7 +1,10 @@
 package model;
 
-public class Winner {
+import java.io.Serializable;
+
+public class Winner implements Serializable{
 	
+	private static final long serialVersionUID = 1;
 	private String nickname;
 	private char symbol;
 	private int score;
