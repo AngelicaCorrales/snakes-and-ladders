@@ -124,7 +124,7 @@ public class Main {
 						bw.flush();
 						startGame();
 					}else if(p<=0) {
-						bw.write("El numero de jugadores no puede ser cero");
+						bw.write("El numero de jugadores no puede ser menor o igual a cero");
 						bw.flush();
 						startGame();
 					}
@@ -136,7 +136,8 @@ public class Main {
 						startGame();
 					}else {
 						int cont = 0;
-						boolean correct = verifySymbols(players, cont); 
+						int times = 0;
+						boolean correct = verifySymbols(players, cont, times); 
 						if(correct==true) {
 							verifyData(rows, cols, snakes, ladders, players);
 						}else {
@@ -163,20 +164,25 @@ public class Main {
 		bw.flush();
 		String line = br.readLine();
 		if(line!=null) {
-			if(!line.equals("num") && !line.equals("simul") && !line.equals("menu")) {
+			if(!line.equalsIgnoreCase("num") && !line.equalsIgnoreCase("simul") && !line.equalsIgnoreCase("menu")) {
 				String msg = mainGame.throwDie();
 				bw.write(msg);
 				bw.flush();
 				showGameBoard();
-			}else if(line.equals("num")) {
+			}else if(line.equalsIgnoreCase("num")) {
 				bw.write("\nPresione enter para continuar");
 				bw.flush();
 				line = br.readLine();
 				if(line!=null) {
 					showGrid();
-					showGameBoard();
+					bw.write("Presione enter para continuar");
+					bw.flush();
+					line = br.readLine();
+					if(line!=null) {
+						showGameBoard();
+					}
 				}
-			}else if(line.equals("simul")){
+			}else if(line.equalsIgnoreCase("simul")){
 				bw.write("\nPresione enter para continuar");
 				bw.flush();
 				line = br.readLine();
@@ -184,7 +190,7 @@ public class Main {
 					bw.write("REVISAAAAAR FUNCIOOON");
 					bw.flush();
 				}
-			}else if(line.equals("menu")) {
+			}else if(line.equalsIgnoreCase("menu")) {
 				bw.write("\nPresione enter para continuar");
 				bw.flush();
 				line = br.readLine();
@@ -197,10 +203,9 @@ public class Main {
 		}
 	}
 
-	private boolean verifySymbols(String players, int cont) {
+	private boolean verifySymbols(String players, int cont, int times) {
 		boolean correct = false;
 		int c = 0;
-		int times = 0;
 		char s = players.charAt(cont);
 		char symbol1 = '*';
 		char symbol2 = '!';
@@ -216,9 +221,12 @@ public class Main {
 				return correct;
 			}else {
 				correct = searchPlayer(players, s, c, times);
+				System.out.println("\n"+correct);
 				cont+=1;
-				if(correct==false) {
-					verifySymbols(players,cont);
+				System.out.println("\ncont = "+cont+"\n");
+				if(correct==false && cont!=players.length()) {
+					System.out.println("repite");
+					verifySymbols(players,cont, times);
 				}
 			}
 		}
@@ -231,10 +239,11 @@ public class Main {
 			if(s!=p.charAt(cont)) {
 				searchPlayer(p, s, (cont+=1), times);
 			}else {
-				times+=1;
-				find = true;
-				return find;
+				System.out.println("\n"+times+"\n"+cont);
+				searchPlayer(p, s, (cont+=1), times);
 			}
+		}else if(times==2) {
+			find = true;
 		}
 		return find;
 	}
@@ -245,7 +254,7 @@ public class Main {
 				bw.write("De acuerdo con las dimensiones del tablero ingresadas no es posible colocar el numero de serpientes o escaleras digitado");
 				bw.flush();
 			}else {
-				bw.write("Las filas, columnas, serpientes o escaleras no pueden ser cero");
+				bw.write("Las filas, columnas, serpientes o escaleras no pueden ser menores o iguales a cero");
 				bw.flush();
 			}
 			startGame();

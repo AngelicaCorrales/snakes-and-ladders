@@ -19,18 +19,14 @@ public class Game {
 		String py = "";
 		String playersS = "";
 		try {
-			playersN = Integer.parseInt(players);
-		}catch(NumberFormatException num) {
-			playersS = p;
-		}
-		if(playersN!=-1) {
+			playersN = Integer.parseInt(p);
 			String playersA = assignSymbol(py, playersN, cont);
 			grid = new Grid(playersA, snakes, ladders, rows, cols);
-			players = playersA;
-		}
-		if(!playersS.equals("")) {
+			setPlayers(playersA);
+		}catch(NumberFormatException num) {
+			playersS = p;
 			grid = new Grid(playersS, snakes, ladders, rows, cols);
-			players = playersS;
+			setPlayers(playersS);
 		}
 	}
 
@@ -54,58 +50,66 @@ public class Game {
 			add = searchSymbol(p, symbol1, c, times);
 			if(add==false) {
 				p += symbol1;
+				cont+=1;
 			}
 			break;
 		case 2:
 			add = searchSymbol(p, symbol2, c, times);
 			if(add==false) {
 				p += symbol2;
+				cont+=1;
 			}
 			break;
 		case 3:
 			add = searchSymbol(p, symbol3, c, times);
 			if(add==false) {
 				p += symbol3;
+				cont+=1;
 			}
 			break;
 		case 4:
 			add = searchSymbol(p, symbol4, c, times);
 			if(add==false) {
 				p += symbol4;
+				cont+=1;
 			}
 			break;
 		case 5:
 			add = searchSymbol(p, symbol5, c, times);
 			if(add==false) {
 				p += symbol5;
+				cont+=1;
 			}
 			break;
 		case 6:
 			add = searchSymbol(p, symbol6, c, times);
 			if(add==false) {
 				p += symbol6;
+				cont+=1;
 			}
 			break;
 		case 7:
 			add = searchSymbol(p, symbol7, c, times);
 			if(add==false) {
 				p += symbol7;
+				cont+=1;
 			}
 			break;
 		case 8:
 			add = searchSymbol(p, symbol8, c, times);
 			if(add==false) {
 				p += symbol8;
+				cont+=1;
 			}
 			break;
 		case 9:
 			add = searchSymbol(p, symbol9, c, times);
 			if(add==false) {
 				p += symbol9;
+				cont+=1;
 			}
 			break;	
 		}
-		cont+=1;
 		if(cont!=playersN) {
 			assignSymbol(p, (playersN-cont), cont);
 		}
