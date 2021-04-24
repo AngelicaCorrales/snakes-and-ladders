@@ -163,4 +163,22 @@ public class Square {
 		}
 		return "["+ladderString+snake+"]";
 	}
+
+	public Player searchPlayer(char player) {
+		
+		return searchPlayer( finalPlayer, player);
+	}
+	
+	public Player searchPlayer(Player current, char player) {
+		Player p=null;
+		if(current!=null && p==null) {
+			if(current.getSymbol()==player) {
+				 p=current;
+			}else {
+				current=current.getPrev();
+				p=searchPlayer(current, player);
+			}
+		}
+		return p;
+	}
 }
