@@ -14,12 +14,14 @@ public class Game {
 	private Grid grid;
 	private String players;
 	private String listOfWinners;
+	private int winnerPosition;
 	private int playerPosition;
 	
 	private Winner winnerRoot;
 
 	public Game() {
 		playerPosition = 0;
+		winnerPosition = 0;
 		players = "";
 		listOfWinners = "";
 	}
@@ -222,6 +224,7 @@ public class Game {
 	}
 	
 	public String listWinnersInorder() {
+		winnerPosition = 0;
 		listOfWinners = "";
 		listWinnersInorder(winnerRoot, winnerRoot.getParent());
 		return listOfWinners;
@@ -233,7 +236,8 @@ public class Game {
 			if(current.getLeft()!=parent) {
 				listWinnersInorder(current.getLeft(), current);
 			}
-			listOfWinners+=current.toString();
+			winnerPosition+=1;
+			listOfWinners+="\n                                           "+winnerPosition+".   "+current.toString();
 			if(current.getRight()!=parent) {
 				listWinnersInorder(current.getRight(), current);
 			}
