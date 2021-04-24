@@ -27,12 +27,10 @@ public class Square {
 		if(firstPlayer==null) {
 			finalPlayer=player;
 		}
+		firstPlayer=player;
 		if(firstPlayer.getNext()==null) {
 			finalPlayer=firstPlayer;
 		}
-		
-		firstPlayer=player;
-		
 	}
 	
 	public void removePlayer(Player player) {
