@@ -35,6 +35,11 @@ public class Grid {
 			if(i1==i2 || square1==finalSquare || square2==finalSquare || square1.getLadder()!=0 || square2.getLadder()!=0 || square1.getSnake()!=0 || square2.getSnake()!=0) {
 				addSnakes(snakes);
 			}else {
+				if(i1<i2) {
+					square1.setFinalSnake(square2);
+				}else {
+					square2.setFinalSnake(square1);
+				}
 				square1.setSnake((char) ('A'+(snakes-1)));
 				square2.setSnake((char) ('A'+(snakes-1)));
 				addSnakes(snakes-1);
@@ -60,6 +65,11 @@ public class Grid {
 			if(i1==i2 || square1==firstSquare || square2==firstSquare || square1.getLadder()!=0 || square2.getLadder()!=0) {
 				addLadders(ladders);
 			}else {
+				if(i1>i2) {
+					square1.setFinalLadder(square2);
+				}else {
+					square2.setFinalLadder(square1);
+				}
 				square1.setLadder(ladders);
 				square2.setLadder(ladders);
 
@@ -179,9 +189,6 @@ public class Grid {
 		return msg;
 	}
 	
-	public Square getFinalSquare() {
-		return finalSquare;
-	}
 	
 	public String toString2() {
 		String msg;
@@ -210,6 +217,12 @@ public class Grid {
 	public void movePlayer(int num, char player) {
 		Square from =searchPlayerInSquare(player, zeroSquare, zeroSquare.getDown());
 		Square to= searchSquareByNumber((num+from.getNum()), zeroSquare,zeroSquare.getDown());
+		if(to.getFinalSnake()!=null) {
+			to=to.getFinalSnake();
+		}
+		if(to.getFinalLadder()!=null) {
+			to=to.getFinalLadder();
+		}
 		from.movePlayer(to, from.searchPlayer(player));
 	}
 	
@@ -235,13 +248,8 @@ public class Grid {
 			if(square.getNext()!=null) {
 				return searchPlayerInSquare(player,square.getNext(), squareDown);
 			}else {
-				//if(square.getDown()!=null) {
-					return searchPlayerInSquare(player,squareDown, squareDown.getDown());
-				//}else {
-					//return null;
-				//}
-				
-				
+				return searchPlayerInSquare(player,squareDown, squareDown.getDown());
+
 			}
 		}
 		
