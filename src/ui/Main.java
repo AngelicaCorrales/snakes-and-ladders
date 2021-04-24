@@ -193,12 +193,7 @@ public class Main {
 				if(mainGame.endGame()==false) {
 					showGameBoard();
 				}else {
-					bw.write("\nPor favor ingrese el apodo o nombre del jugador ganador: \n");
-					bw.flush();
-					line = br.readLine();
-					if(line!=null && !line.equals("")) {
-						mainGame.addWinner(line);
-					}
+					registerWinner();
 				}
 			}else if(line.equalsIgnoreCase("num")) {
 				bw.write("\nPresione enter para continuar");
@@ -296,7 +291,7 @@ public class Main {
 		bw.write("\n                                 **************************************************************************************************");
 		bw.write("\n                                             Nickname        *            Simbolo               *               Puntaje            ");
 		bw.write("\n                                 **************************************************************************************************");
-		//bw.write();
+		bw.write(mainGame.listWinnersInorder());
 	}
 	
 	public void showGrid() throws IOException {
@@ -313,12 +308,18 @@ public class Main {
 			Thread.sleep(2000);
 			showSimul();
 		}else {
-			bw.write("\nPor favor ingrese el apodo o nombre del jugador ganador: \n");
-			bw.flush();
-			String line = br.readLine();
-			if(line!=null && !line.equals("")) {
-				mainGame.addWinner(line);
-			}
+			registerWinner();
+		}
+	}
+	
+	public void registerWinner() throws IOException {
+		bw.write("\nPor favor ingrese el apodo o nombre del jugador ganador: \n");
+		bw.flush();
+		String line = br.readLine();
+		if(line!=null && !line.equals("")) {
+			mainGame.addWinner(line);
+		}else{
+			registerWinner();
 		}
 	}
 }

@@ -258,10 +258,6 @@ public class Game {
 		this.playerPosition = playerPosition;
 	}
 	
-	public void showWinners() {
-		
-	}
-
 	public Winner getWinnerRoot() {
 		return winnerRoot;
 	}
