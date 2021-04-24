@@ -15,6 +15,8 @@ public class Square {
 	private Square prev;
 	private Square up;	
 	private Square down;
+	private Square finalLadder;
+	private Square finalSnake;
 
 	public Square(int row, int col) {
 		this.col = col;
@@ -152,6 +154,22 @@ public class Square {
 		this.row = row;
 	}
 	
+	public Square getFinalLadder() {
+		return finalLadder;
+	}
+
+	public void setFinalLadder(Square finalLadder) {
+		this.finalLadder = finalLadder;
+	}
+
+	public Square getFinalSnake() {
+		return finalSnake;
+	}
+
+	public void setFinalSnake(Square finalSnake) {
+		this.finalSnake = finalSnake;
+	}
+	
 	public String toString() {
 		String ladderString="";
 		if(ladder!=0) {
@@ -201,4 +219,6 @@ public class Square {
 		}
 		return p;
 	}
+
+	
 }

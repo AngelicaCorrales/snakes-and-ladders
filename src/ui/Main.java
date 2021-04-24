@@ -23,10 +23,12 @@ public class Main {
 		game.startGame(5, 4, 2, 2, "#*");
 		System.out.println(game.getGrid());
 		System.out.println(game.getGrid().toString2());
-		game.throwDie();
-		System.out.println(game.getGrid().toString2());
-		game.throwDie();
-		System.out.println(game.getGrid().toString2());
+		for(int i=0;i<=10;i++) {
+			game.throwDie();
+			System.out.println(game.getGrid().toString2());
+			game.throwDie();
+			System.out.println(game.getGrid().toString2());
+		}
 		
 
 	}
