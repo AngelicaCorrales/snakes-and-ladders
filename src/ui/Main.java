@@ -42,19 +42,20 @@ public class Main {
 	public BufferedWriter bw;
 	private Game mainGame;
 
-	public Main(){
+	public Main() throws IOException{
 		br = new BufferedReader(new InputStreamReader(System.in));
 		bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		mainGame = new Game();
-		/*boolean loadData;
+		boolean loadData;
 		try {
 			loadData = mainGame.loadWinners();
 		} catch (ClassNotFoundException | IOException e) {
 			loadData = false;
 			if(!loadData) {
 				bw.write("Error al cargar los ganadores del juego");
+				bw.flush();
 			}
-		}*/
+		}
 	}
 
 	public static void main(String[] args) throws IOException, InterruptedException {
@@ -188,7 +189,16 @@ public class Main {
 				String msg = mainGame.throwDie();
 				bw.write(msg);
 				bw.flush();
-				showGameBoard();
+				if(mainGame.endGame()==false) {
+					showGameBoard();
+				}else {
+					bw.write("\nPor favor ingrese el apodo o nombre del jugador ganador: \n");
+					bw.flush();
+					line = br.readLine();
+					if(line!=null && !line.equals("")) {
+						mainGame.addWinner(line);
+					}
+				}
 			}else if(line.equalsIgnoreCase("num")) {
 				bw.write("\nPresione enter para continuar");
 				bw.flush();
@@ -298,8 +308,17 @@ public class Main {
 		bw.flush();
 		bw.write("\n"+mainGame.getGrid().toString2()+"\n");
 		bw.flush();
-		Thread.sleep(2000);
-		showSimul();
+		if(mainGame.endGame()==false) {
+			Thread.sleep(2000);
+			showSimul();
+		}else {
+			bw.write("\nPor favor ingrese el apodo o nombre del jugador ganador: \n");
+			bw.flush();
+			String line = br.readLine();
+			if(line!=null && !line.equals("")) {
+				mainGame.addWinner(line);
+			}
+		}
 	}
 }
 
