@@ -9,6 +9,17 @@ public class Grid {
 	private int rows;
 	private int columns;
 	
+	/**
+	*This is the constructor of the class <br>
+	*<b>name:</b> Grid <br>
+	*<b>pre</b>: the variables players, snakes, ladders,rows, columns are already initialized. <br>
+	*<b>post:</b> the attributes and relationships of the class have been initialized. The grid has been created. The snakes and ladders have been added to the grid<br>
+	*@param players Is the symbols of the players for the game. players!=null and players!=""<br>
+	*@param snakes Is the number of snakes for the game. snakes greater than 0<br>
+	*@param ladders Is the number of ladders for the game. ladders greater than 0<br>
+	*@param rows Is the number of rows for the game. rows greater than 0<br>
+	*@param columns Is the number of columns for the game. columns greater than 0<br>
+	*/
 	public Grid(String players, int snakes, int ladders, int rows, int columns) {
 		this.rows = rows;
 		this.columns = columns;

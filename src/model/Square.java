@@ -69,7 +69,7 @@ public class Square {
 
 	public void addPlayers(String players, int cont) {
 		if(cont!=players.length()) {
-			Player player = new Player(players.charAt(cont), 0);
+			Player player = new Player(players.charAt(cont));
 			addPlayer(player);
 			cont+=1;
 			addPlayers(players, cont);
