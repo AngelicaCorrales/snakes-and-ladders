@@ -179,12 +179,31 @@ public class Grid {
 		return msg;
 	}
 	
-	public String toString2() {
-		String msg = "";
-		
-		return msg;
-	}
 	public Square getFinalSquare() {
 		return finalSquare;
+	}
+	
+	public String toString2() {
+		String msg;
+		msg = toStringRow2(zeroSquare);
+		return msg;
+	}
+	
+	private String toStringRow2(Square firstRow) {
+		String msg = "";
+		if(firstRow!=null) {
+			msg = toStringCol2(firstRow) + "\n";
+			msg += toStringRow2(firstRow.getDown());
+		}
+		return msg;
+	}
+
+	private String toStringCol2(Square current) {
+		String msg = "";
+		if(current!=null) {
+			msg = current.toString2();
+			msg += toStringCol2(current.getNext());
+		}
+		return msg;
 	}
 }

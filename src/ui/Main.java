@@ -114,9 +114,10 @@ public class Main {
 		bw.flush();
 		String line = br.readLine();
 		if(line!=null) {
+			line = line.trim();
 			String[] info = line.split(" ");
 			if(info.length!=5) {
-				bw.write("Debe ingresar toda la informacion solicitada");
+				bw.write("Debe ingresar toda la informacion solicitada correctamente");
 				bw.flush();
 				startGame();
 			}else {
@@ -156,7 +157,53 @@ public class Main {
 					}
 				}
 			}
-			showGameBoard();
+			showGrid();
+			bw.write("Presione enter para continuar");
+			bw.flush();
+			line = br.readLine();
+			if(line!=null) {
+				showGameBoard();
+			}
+		}
+	}
+
+	private void showGameBoard() throws IOException {
+		bw.write("\n"+mainGame.getGrid().toString2()+"\n");
+		bw.write("Presione enter para continuar o digite los comandos num, simul o menu si lo desea.\n");
+		bw.flush();
+		String line = br.readLine();
+		if(line!=null) {
+			if(!line.equals("num") && !line.equals("simul") && !line.equals("menu")) {
+				String msg = mainGame.throwDie();
+				bw.write(msg);
+				bw.flush();
+				showGameBoard();
+			}else if(line.equals("num")) {
+				bw.write("\nPresione enter para continuar");
+				bw.flush();
+				line = br.readLine();
+				if(line!=null) {
+					showGrid();
+					showGameBoard();
+				}
+			}else if(line.equals("simul")){
+				bw.write("\nPresione enter para continuar");
+				bw.flush();
+				line = br.readLine();
+				if(line!=null) {
+					bw.write("REVISAAAAAR FUNCIOOON");
+					bw.flush();
+				}
+			}else if(line.equals("menu")) {
+				bw.write("\nPresione enter para continuar");
+				bw.flush();
+				line = br.readLine();
+				if(line!=null) {
+					menu();
+				}
+			}else {
+				showGameBoard();
+			}
 		}
 	}
 
@@ -221,8 +268,8 @@ public class Main {
 
 	}
 	
-	public void showGameBoard() throws IOException {
-		bw.write("\n"+mainGame.getGrid());
+	public void showGrid() throws IOException {
+		bw.write("\n"+mainGame.getGrid().toString()+"\n");
 	}
 }
 
