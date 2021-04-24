@@ -25,24 +25,35 @@ public class Square {
 	
 	public void addPlayer(Player player) {
 		//AL INICIO DE LA LISTA
-		player.setNext(firstPlayer);
-		
-		if(firstPlayer==null) {
-			finalPlayer=player;
-		}else {
-			firstPlayer.setPrev(player);
-		}
-		firstPlayer=player;
-		if(firstPlayer.getNext()==null) {
-			finalPlayer=firstPlayer;
+		if(player!=firstPlayer || player!=finalPlayer) {
+			player.setNext(firstPlayer);
+			if(firstPlayer==null) {
+				finalPlayer=player;
+			}else {
+				firstPlayer.setPrev(player);
+			}
+			firstPlayer=player;
+			if(firstPlayer.getNext()==null) {
+				finalPlayer=firstPlayer;
+			}
 		}
 	}
 	
 	public void removePlayer(Player player) {
-		if(player==finalPlayer) {
+		if(player.getSymbol()==finalPlayer.getSymbol()) {
 			Player prev=player.getPrev();
 			if(prev!=null) {
 				prev.setNext(null);
+				
+			}
+			if(player==firstPlayer) {
+				
+				if(prev!=null && prev.getPrev()==null) {
+					firstPlayer=prev;
+				}
+				if(prev==null) {
+					firstPlayer=prev;
+				}
 			}
 			player.setPrev(null);
 			finalPlayer=prev;

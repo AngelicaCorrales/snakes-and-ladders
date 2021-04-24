@@ -18,7 +18,7 @@ public class Main {
 		//System.out.println(grid);
 		//System.out.println(grid.toString2());
 		Game game=new Game();
-		game.startGame(5, 4, 2, 2, "#*");
+		game.startGame(5, 4, 2, 2, "#*%");
 		System.out.println(game.getGrid());
 		System.out.println(game.getGrid().toString2());
 		while(!game.endGame()) {

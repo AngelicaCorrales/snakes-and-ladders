@@ -191,7 +191,7 @@ public class Game {
 	}
 	
 	public void addWinner(String nickname) {
-		int score=grid.getWinner().getMovements()*grid.getRows()+grid.getColumns();
+		int score=grid.getWinner().getMovements()*grid.getRows()*grid.getColumns();
 		Winner winner=new Winner(grid.getWinner().getSymbol(), nickname, score);
 		if(winnerRoot==null) {
 			winnerRoot=winner;
@@ -263,7 +263,5 @@ public class Game {
 		
 	}
 	
-	public Winner winner() {
-		return winnerRoot;
-	}
+	
 }
