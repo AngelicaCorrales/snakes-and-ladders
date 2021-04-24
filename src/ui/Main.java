@@ -7,35 +7,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import model.Game;
 
-/*import model.Grid;
-
-public class Main {
-
-	public static void main(String[] args) {
-
-		//Grid grid =new Grid("#*", 2, 2, 5, 4);
-
-		//System.out.println(grid);
-		//System.out.println(grid.toString2());
-		Game game=new Game();
-		game.startGame(5, 4, 2, 2, "#*%");
-		System.out.println(game.getGrid());
-		System.out.println(game.getGrid().toString2());
-		while(!game.endGame()) {
-			System.out.println(game.throwDie());
-			System.out.println(game.getGrid().toString2());
-			if(game.endGame()) {
-				game.addWinner("Ganador");
-				System.out.println(game.winner());// era un metodo que devolvía el winnerRoot
-			}
-		}
-
-
-	}
-}
-
- */
-
 public class Main {
 
 	public BufferedReader br;
