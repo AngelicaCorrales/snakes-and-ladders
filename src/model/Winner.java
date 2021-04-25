@@ -174,7 +174,7 @@ public class Winner implements Serializable{
  	*/ 
 	
 	public String toString() {
-		return symbol+"                "+"         "+nickname+"         "+"                           "+score+"         ";
+		return nickname+"                "+"         "+symbol+"         "+"         "+score+"         "+"         "+gameSettings+"         "+"         "+players+"         ";
 	}
 
 	

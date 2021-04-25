@@ -43,6 +43,15 @@ public class Game {
 	}
 	
 	/**
+	*This method resets the player position. <br>
+	*<b>name:</b> resetPlayerPosition.<br>
+	*<b>post:</b> the player position has been reset. <br>
+	*/
+	public void resetPlayerPosition() {
+		playerPosition=0;
+	}
+	
+	/**
 	* This method serializes or saves all the information about the winner of each round in the game.<br>
 	* <b>name</b>: saveWinners <br>
 	* <b>post</b>: The winner of a round was saved. <br>
@@ -98,7 +107,7 @@ public class Game {
 	*/
 
 	public void startGame(int rows, int cols, int snakes, int ladders, String p) {
-		int playersN = -1;
+		int playersN = 0;
 		int cont = 0;
 		String py = "";
 		String playersS = "";
@@ -146,6 +155,7 @@ public class Game {
 		case 1:
 			add = searchSymbol(p, symbol1, c, times);
 			if(add==false) {
+				//playersN--;
 				p += symbol1;
 				cont+=1;
 			}
@@ -153,6 +163,7 @@ public class Game {
 		case 2:
 			add = searchSymbol(p, symbol2, c, times);
 			if(add==false) {
+				//playersN--;
 				p += symbol2;
 				cont+=1;
 			}
@@ -160,6 +171,7 @@ public class Game {
 		case 3:
 			add = searchSymbol(p, symbol3, c, times);
 			if(add==false) {
+				//playersN--;
 				p += symbol3;
 				cont+=1;
 			}
@@ -167,6 +179,7 @@ public class Game {
 		case 4:
 			add = searchSymbol(p, symbol4, c, times);
 			if(add==false) {
+				//playersN--;
 				p += symbol4;
 				cont+=1;
 			}
@@ -174,6 +187,7 @@ public class Game {
 		case 5:
 			add = searchSymbol(p, symbol5, c, times);
 			if(add==false) {
+				//playersN--;
 				p += symbol5;
 				cont+=1;
 			}
@@ -181,6 +195,7 @@ public class Game {
 		case 6:
 			add = searchSymbol(p, symbol6, c, times);
 			if(add==false) {
+				//playersN--;
 				p += symbol6;
 				cont+=1;
 			}
@@ -188,6 +203,7 @@ public class Game {
 		case 7:
 			add = searchSymbol(p, symbol7, c, times);
 			if(add==false) {
+				//playersN--;
 				p += symbol7;
 				cont+=1;
 			}
@@ -195,6 +211,7 @@ public class Game {
 		case 8:
 			add = searchSymbol(p, symbol8, c, times);
 			if(add==false) {
+				//playersN--;
 				p += symbol8;
 				cont+=1;
 			}
@@ -202,13 +219,14 @@ public class Game {
 		case 9:
 			add = searchSymbol(p, symbol9, c, times);
 			if(add==false) {
+				//playersN--;
 				p += symbol9;
 				cont+=1;
 			}
 			break;	
 		}
-		if(cont!=playersN) {
-			assignSymbol(p, (playersN-cont), cont);
+		if(cont<playersN) {
+			p=assignSymbol(p, (playersN), cont);
 		}
 		return p;
 	}
@@ -227,14 +245,16 @@ public class Game {
 	
 	private boolean searchSymbol(String p, char s, int cont, int times) {
 		boolean find = false;
-		if(times<=1 && cont!=p.length()) {
+		if(times==0 && cont<p.length()) {
 			if(s!=p.charAt(cont)) {
-				searchSymbol(p, s, (cont+=1), times);
+				find=searchSymbol(p, s, (cont+=1), times);
 			}else {
 				times+=1;
 				find = true;
 				return find;
 			}
+		}else if(times==1){
+			find=true;
 		}
 		return find;
 	}
@@ -266,7 +286,7 @@ public class Game {
 	
 	private char returnPlayer() {
 		char p = ' ';
-		if(playerPosition!=players.length()) {
+		if(playerPosition<players.length()) {
 			p = players.charAt(playerPosition);
 		}else {
 			playerPosition = 0;
@@ -286,6 +306,7 @@ public class Game {
 		boolean end=false;
 		if(grid.getWinner()!=null) {
 			end=true;
+			playerPosition=0;
 		}
 		return end;
 	}
@@ -375,7 +396,7 @@ public class Game {
 				listWinnersInorder(current.getLeft(), current);
 			}
 			winnerPosition+=1;
-			listOfWinners+="\n                                           "+winnerPosition+".   "+current.toString();
+			listOfWinners+="\n  "+winnerPosition+". "+current.toString();
 			if(current.getRight()!=parent) {
 				listWinnersInorder(current.getRight(), current);
 			}
