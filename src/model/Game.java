@@ -84,8 +84,8 @@ public class Game {
 	* <b>post</b>: The game board was created. <br>
 	* @param snakes Is an Integer variable that contains the number of snakes for the game. snakes greater than 0.<br>
 	* @param ladders Is an Integer variable that contains the number of ladders for the game. ladders greater than 0.<br>
-	* @param rows Is an Integer variable that contains the number of rows for the game. rows greater than 0.<br>
-	* @param columns Is an Integer variable that contains the number of columns for the game. columns greater than 0.<br>
+	* @param rows Is an Integer variable that contains the number of rows for the game. rows greater than 2.<br>
+	* @param columns Is an Integer variable that contains the number of columns for the game. columns greater than 2.<br>
 	* @param p Is a String variable that contains the players for the game. p!="" && p!=null.<br>
 	*/
 

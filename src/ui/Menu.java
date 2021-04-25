@@ -342,7 +342,7 @@ public class Menu {
 	* This method verifies that the number of rows, columns, snakes and ladders entered by the user is correct. <br>
 	* <b>name</b>: verifyData <br>
 	* <b>pre</b>: The variables rows, cols, snakes, ladders and players are already initialized. <br>
-	* <b>post</b>: The number of rows, columns, snakes and ladders were verified according to the restrictions. <br>
+	* <b>post</b>: True or false was returned according to the verification. <br>
 	* @param snakes Is an Integer variable that contains the number of snakes for the game.<br>
 	* @param ladders Is an Integer variable that contains the number of ladders for the game.<br>
 	* @param rows Is an Integer variable that contains the number of rows for the game.<br>
@@ -355,6 +355,7 @@ public class Menu {
     *       3. The disk space was no longer available while trying to write to a file.<br>
     * @throws InterruptedException: <br>
 	* 		thrown when a thread is waiting, sleeping, or otherwise occupied, and the thread is interrupted, either before or during the activity. <br>       
+	* @return a <code> boolean </code> specifying verify, a variable that indicates if the number of rows, columns, snakes and ladders are correct. 
 	*/
 
 	private boolean verifyData(int rows, int cols, int snakes, int ladders, String players) throws IOException, InterruptedException {
