@@ -9,6 +9,8 @@ public class Winner implements Serializable{
 	private String nickname;
 	private char symbol;
 	private int score;
+	private String gameSettings;
+	private String players;
 	
 	//Relationships
 	private Winner left;
@@ -25,10 +27,12 @@ public class Winner implements Serializable{
 	* @param score Is an integer variable that contains the score of a winner player in the game. score!=0.<br>
 	*/
 	
-	public Winner(char symbol, String nickname, int score) {
+	public Winner(char symbol, String nickname, int score, String gameSettings, String players) {
 		this.symbol=symbol;
 		this.nickname=nickname;
 		this.score=score;
+		this.gameSettings=gameSettings;
+		this.players=players;
 	}
 	
 	//Getters and Setters
@@ -133,6 +137,28 @@ public class Winner implements Serializable{
 	}
 	
 	/**
+	* This method returns the game settings. <br>
+	* <b>name</b>: getGameSettings <br>
+	* <b>post</b>: the game settings have been gotten. <br>
+	* @return a <code> String </code> specifying gameSettings, the game settings.
+	*/
+	public String getGameSettings() {
+		return gameSettings;
+	}
+
+	/**
+	* This method returns the player symbols of the game. <br>
+	* <b>name</b>: getPlayers <br>
+	* <b>post</b>: the player symbols have been gotten. <br>
+	* @return a <code> String </code> specifying players, the player symbols of the game.
+	*/
+	public String getPlayers() {
+		return players;
+	}
+
+	
+	
+	/**
 	* This method produces a String with all the information about Winner. <br>
 	* <b>name</b>: toString.<br>
  	* <b>post</b>: All the information of a Winner was returned. <br>
@@ -142,5 +168,7 @@ public class Winner implements Serializable{
 	public String toString() {
 		return symbol+"                "+"         "+nickname+"         "+"                           "+score+"         ";
 	}
+
+	
 	
 }

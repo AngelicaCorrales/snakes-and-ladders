@@ -14,6 +14,7 @@ public class Game {
 	public final static String SAVE_PATH_FILE = "data/winners.ackl";
 	private String players;
 	private String listOfWinners;
+	private String gameSettings;
 	private int winnerPosition;
 	private int playerPosition;
 	
@@ -32,6 +33,7 @@ public class Game {
 		winnerPosition = 0;
 		players = "";
 		listOfWinners = "";
+		gameSettings="";
 	}
 	
 	/**
@@ -99,6 +101,7 @@ public class Game {
 			String playersA = assignSymbol(py, playersN, cont);
 			grid = new Grid(playersA, snakes, ladders, rows, cols);
 			players = playersA;
+			gameSettings=rows+" "+cols+" "+snakes+" "+ladders+" "+p;
 		}catch(NumberFormatException num) {
 			playersS = p;
 			grid = new Grid(playersS, snakes, ladders, rows, cols);
@@ -295,7 +298,7 @@ public class Game {
 	
 	public void addWinner(String nickname) throws IOException {
 		int score=grid.getWinner().getMovements()*grid.getRows()*grid.getColumns();
-		Winner winner=new Winner(grid.getWinner().getSymbol(), nickname, score);
+		Winner winner=new Winner(grid.getWinner().getSymbol(), nickname, score, gameSettings, players);
 		if(winnerRoot==null) {
 			setWinnerRoot(winner);
 			saveWinners();

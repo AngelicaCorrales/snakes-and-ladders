@@ -360,9 +360,9 @@ public class Menu {
 
 	private boolean verifyData(int rows, int cols, int snakes, int ladders, String players) throws IOException, InterruptedException {
 		boolean verify=false;
-		if(rows<=2 || cols<=2 || rows<=0 || cols<=0 || snakes<=0 || ladders<=0 || (((snakes*2)+(ladders*2))>(rows*cols)) ) {
+		if((rows<=2 && cols<=2) || rows<=1 || cols<=1 || snakes<=0 || ladders<=0 || (((snakes*2)+(ladders*2))>(rows*cols)) ) {
 			verify=true;
-			if(rows<=2 ||cols<=2||((snakes*2)+(ladders*2))>(rows*cols)){
+			if((rows<=2 && cols<=2) || rows<=1 || cols<=1||((snakes*2)+(ladders*2))>(rows*cols)){
 				bw.write("De acuerdo con las dimensiones del tablero ingresadas no es posible colocar el numero de serpientes o escaleras digitado");
 				bw.flush();
 			}else {
