@@ -155,7 +155,6 @@ public class Game {
 		case 1:
 			add = searchSymbol(p, symbol1, c, times);
 			if(add==false) {
-				//playersN--;
 				p += symbol1;
 				cont+=1;
 			}
@@ -163,7 +162,6 @@ public class Game {
 		case 2:
 			add = searchSymbol(p, symbol2, c, times);
 			if(add==false) {
-				//playersN--;
 				p += symbol2;
 				cont+=1;
 			}
@@ -171,7 +169,6 @@ public class Game {
 		case 3:
 			add = searchSymbol(p, symbol3, c, times);
 			if(add==false) {
-				//playersN--;
 				p += symbol3;
 				cont+=1;
 			}
@@ -179,7 +176,6 @@ public class Game {
 		case 4:
 			add = searchSymbol(p, symbol4, c, times);
 			if(add==false) {
-				//playersN--;
 				p += symbol4;
 				cont+=1;
 			}
@@ -187,7 +183,6 @@ public class Game {
 		case 5:
 			add = searchSymbol(p, symbol5, c, times);
 			if(add==false) {
-				//playersN--;
 				p += symbol5;
 				cont+=1;
 			}
@@ -195,7 +190,6 @@ public class Game {
 		case 6:
 			add = searchSymbol(p, symbol6, c, times);
 			if(add==false) {
-				//playersN--;
 				p += symbol6;
 				cont+=1;
 			}
@@ -203,7 +197,6 @@ public class Game {
 		case 7:
 			add = searchSymbol(p, symbol7, c, times);
 			if(add==false) {
-				//playersN--;
 				p += symbol7;
 				cont+=1;
 			}
@@ -211,7 +204,6 @@ public class Game {
 		case 8:
 			add = searchSymbol(p, symbol8, c, times);
 			if(add==false) {
-				//playersN--;
 				p += symbol8;
 				cont+=1;
 			}
@@ -219,7 +211,6 @@ public class Game {
 		case 9:
 			add = searchSymbol(p, symbol9, c, times);
 			if(add==false) {
-				//playersN--;
 				p += symbol9;
 				cont+=1;
 			}
