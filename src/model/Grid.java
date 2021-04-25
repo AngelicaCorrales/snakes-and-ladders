@@ -21,8 +21,8 @@ public class Grid {
 	*@param players Is a String variable that contains the symbols of the players for the game. players!=null and players!="".<br>
 	*@param snakes Is an integer variable that contains the number of snakes for the game. snakes greater than 0.<br>
 	*@param ladders Is an integer variable that contains the number of ladders for the game. ladders greater than 0.<br>
-	*@param rows Is an integer variable that contains the number of rows for the game. rows greater than 0.<br>
-	*@param columns Is an integer variable that contains the number of columns for the game. columns greater than 0.<br>
+	*@param rows Is an integer variable that contains the number of rows for the game. rows greater than 2.<br>
+	*@param columns Is an integer variable that contains the number of columns for the game. columns greater than 2.<br>
 	*/
 	public Grid(String players, int snakes, int ladders, int rows, int columns) {
 		this.rows = rows;
