@@ -8,6 +8,12 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * This class contains attributes, relationship and methods of a game.
+ * @version 1
+ * @author Angelica Corrales Quevedo, https://github.com/AngelicaCorrales
+ * @author Keren Lopez Cordoba, https://github.com/KerenLopez
+ */
 public class Game {
 	
 	//Attributes
@@ -40,7 +46,7 @@ public class Game {
 	* This method serializes or saves all the information about the winner of each round in the game.<br>
 	* <b>name</b>: saveWinners <br>
 	* <b>post</b>: The winner of a round was saved. <br>
-	* @throws IOException: <br>
+	* @throws IOException <br>
 	* 		thrown if...
 	* 		1. A local file that was no longer available is being read.<br>
     *       2. Any process closed the stream while a stream is being used to read data.<br>
@@ -57,12 +63,12 @@ public class Game {
 	* This method loads all the information about the winners of the game.<br>
 	* <b>name</b>: loadWinners <br>
 	* <b>post</b>: The winners of the game were loaded. <br>
-	* @throws IOException: <br>
+	* @throws IOException <br>
 	* 		thrown if...
 	* 		1. A local file that was no longer available is being read.<br>
     *       2. Any process closed the stream while a stream is being used to read data.<br>
     *       3. The disk space was no longer available while trying to write to a file.<br>
-    * @throws ClassNotFoundException: <br>
+    * @throws ClassNotFoundException <br>
     *		thrown if the path of the file wasn't found. <br> 
     * @return a <code> boolean </code> specifying loaded, a variable that indicates if the file with the given path was found.  
 	*/
@@ -87,8 +93,8 @@ public class Game {
 	* @param snakes Is an Integer variable that contains the number of snakes for the game. snakes greater than 0.<br>
 	* @param ladders Is an Integer variable that contains the number of ladders for the game. ladders greater than 0.<br>
 	* @param rows Is an Integer variable that contains the number of rows for the game. rows greater than 1.<br>
-	* @param columns Is an Integer variable that contains the number of columns for the game. columns greater than 1.<br>
-	* @param p Is a String variable that contains the players for the game. p!="" && p!=null.<br>
+	* @param cols Is an Integer variable that contains the number of columns for the game. columns greater than 1.<br>
+	* @param p Is a String variable that contains the players for the game. p!="" and p!=null.<br>
 	*/
 
 	public void startGame(int rows, int cols, int snakes, int ladders, String p) {
@@ -101,12 +107,13 @@ public class Game {
 			String playersA = assignSymbol(py, playersN, cont);
 			grid = new Grid(playersA, snakes, ladders, rows, cols);
 			players = playersA;
-			gameSettings=rows+" "+cols+" "+snakes+" "+ladders+" "+p;
 		}catch(NumberFormatException num) {
 			playersS = p;
 			grid = new Grid(playersS, snakes, ladders, rows, cols);
 			players = playersS;
 		}
+		gameSettings=rows+" "+cols+" "+snakes+" "+ladders+" "+p;
+
 	}
 
 	/**
@@ -288,8 +295,8 @@ public class Game {
 	* <b>name</b>: addWinner <br>
 	* <b>pre</b>: The variable nickname is already initialized. <br>
 	* <b>post</b>: The winner player was added. <br>
-	* @param nickname Is a String variable that contains the name of a winner player. p!="" && p!=null.<br>
-	* @throws IOException: <br>
+	* @param nickname Is a String variable that contains the name of a winner player. p!="" and p!=null.<br>
+	* @throws IOException <br>
 	* 		thrown if...
 	* 		1. A local file that was no longer available is being read.<br>
     *       2. Any process closed the stream while a stream is being used to read data.<br>
@@ -346,7 +353,10 @@ public class Game {
 	public String listWinnersInorder() {
 		winnerPosition = 0;
 		listOfWinners = "";
-		listWinnersInorder(winnerRoot, winnerRoot.getParent());
+		if(winnerRoot!=null) {
+			listWinnersInorder(winnerRoot, winnerRoot.getParent());
+			
+		}
 		return listOfWinners;
 	}
 

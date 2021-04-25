@@ -8,6 +8,12 @@ import java.io.OutputStreamWriter;
 
 import model.Game;
 
+/**
+ * This class contains attributes, relationship and methods of the menu .
+ * @version 1
+ * @author Angelica Corrales Quevedo, https://github.com/AngelicaCorrales
+ * @author Keren Lopez Cordoba, https://github.com/KerenLopez
+ */
 public class Menu {
 	
 	//Attributes
@@ -21,6 +27,7 @@ public class Menu {
 	* Builder method <br>
 	* <b>name</b>: Menu <br>
 	* <b>post</b>: The attributes and relationship of the class were initialized. <br>
+	* @throws IOException <br>
 	*/
 	
 	public Menu() throws IOException{
@@ -43,12 +50,12 @@ public class Menu {
 	* This method calls the menu and sends the option chosen by the user to another method.<br>
 	* <b>name</b>: mainMethod <br>
 	* <b>post</b>: The menu was called and the option chosen by the user was sent to another method. <br>
-	* @throws IOException: <br>
+	* @throws IOException <br>
 	* 		thrown if...
 	* 		1. A local file that was no longer available is being read.<br>
     *       2. Any process closed the stream while a stream is being used to read data.<br>
     *       3. The disk space was no longer available while trying to write to a file.<br>
-    * @throws InterruptedException: <br>
+    * @throws InterruptedException <br>
 	* 		thrown when a thread is waiting, sleeping, or otherwise occupied, and the thread is interrupted, either before or during the activity. <br>       
 	*/
 	
@@ -69,12 +76,12 @@ public class Menu {
 	* <b>name</b>: chooseOption <br>
 	* <b>post</b>: The menu was called again if the option chosen by the user was incorrect. <br>
 	* @param op Is an Integer variable that contains the number of the option chosen by the user. <br>
-	* @throws IOException: <br>
+	* @throws IOException <br>
 	* 		thrown if...
 	* 		1. A local file that was no longer available is being read.<br>
     *       2. Any process closed the stream while a stream is being used to read data.<br>
     *       3. The disk space was no longer available while trying to write to a file.<br>
-    * @throws InterruptedException: <br>
+    * @throws InterruptedException <br>
 	* 		thrown when a thread is waiting, sleeping, or otherwise occupied, and the thread is interrupted, either before or during the activity. <br>       
 	*/
 	
@@ -88,12 +95,12 @@ public class Menu {
 	* This method shows the options available to the user.<br>
 	* <b>name</b>: menuOptions <br>
 	* <b>post</b>: All the options of the program were displayed to the user. <br>
-	* @throws IOException: <br>
+	* @throws IOException <br>
 	* 		thrown if...
 	* 		1. A local file that was no longer available is being read.<br>
     *       2. Any process closed the stream while a stream is being used to read data.<br>
     *       3. The disk space was no longer available while trying to write to a file.<br>
-    * @throws InterruptedException: <br>
+    * @throws InterruptedException <br>
 	* 		thrown when a thread is waiting, sleeping, or otherwise occupied, and the thread is interrupted, either before or during the activity. <br>       
 	 * @return an <code> Integer </code> specifying option, a variable that contains the number of the option chosen by the user.
 	*/
@@ -145,12 +152,12 @@ public class Menu {
 	* This method allows the user to enter the text string that contains all the information about the game (number of rows and columns of the board, plus the snakes, ladders and players).<br>
 	* <b>name</b>: startGame <br>
 	* <b>post</b>: The user was able to enter the text string with all its features. <br>
-	* @throws IOException: <br>
+	* @throws IOException <br>
 	* 		thrown if...
 	* 		1. A local file that was no longer available is being read.<br>
     *       2. Any process closed the stream while a stream is being used to read data.<br>
     *       3. The disk space was no longer available while trying to write to a file.<br>
-    * @throws InterruptedException: <br>
+    * @throws InterruptedException <br>
 	* 		thrown when a thread is waiting, sleeping, or otherwise occupied, and the thread is interrupted, either before or during the activity. <br>       
 	*/
 	
@@ -227,12 +234,12 @@ public class Menu {
 	* This method displays the board throughout the game and allows the user to enter commands such as num, simul or menu.<br>
 	* <b>name</b>: showGameBoard <br>
 	* <b>post</b>: The game board was displayed throughout the game and the user could enter commands if he/she desired. <br>
-	* @throws IOException: <br>
+	* @throws IOException <br>
 	* 		thrown if...
 	* 		1. A local file that was no longer available is being read.<br>
     *       2. Any process closed the stream while a stream is being used to read data.<br>
     *       3. The disk space was no longer available while trying to write to a file.<br>
-    * @throws InterruptedException: <br>
+    * @throws InterruptedException <br>
 	* 		thrown when a thread is waiting, sleeping, or otherwise occupied, and the thread is interrupted, either before or during the activity. <br>       
 	*/
 	
@@ -280,7 +287,7 @@ public class Menu {
 	* <b>post</b>: True or false was returned depending of the verifications carried out with the symbols. <br>
 	* @param times Is an Integer variable that will contains the number of times that a given symbol is encountered in the text string.<br>
 	* @param cont Is an Integer variable that will contain the position of a letter within the text string.<br>
-	* @param p Is a String variable that contains all the symbols of the players. p!="" p!=null.<br>
+	* @param players Is a String variable that contains all the symbols of the players. players!="", players!=null.<br>
 	* @return a <code> boolean </code> specifying correct, a variable that indicates if all the symbols that were entered are correct. 
 	*/
 	
@@ -346,14 +353,14 @@ public class Menu {
 	* @param snakes Is an Integer variable that contains the number of snakes for the game.<br>
 	* @param ladders Is an Integer variable that contains the number of ladders for the game.<br>
 	* @param rows Is an Integer variable that contains the number of rows for the game.<br>
-	* @param columns Is an Integer variable that contains the number of columns for the game.<br>
-	* @param players Is a String variable that contains the players for the game. p!="" && p!=null.<br>
-	* @throws IOException: <br>
+	* @param cols Is an Integer variable that contains the number of columns for the game.<br>
+	* @param players Is a String variable that contains the players for the game. p!="" and p!=null.<br>
+	* @throws IOException <br>
 	* 		thrown if...
 	* 		1. A local file that was no longer available is being read.<br>
     *       2. Any process closed the stream while a stream is being used to read data.<br>
     *       3. The disk space was no longer available while trying to write to a file.<br>
-    * @throws InterruptedException: <br>
+    * @throws InterruptedException <br>
 	* 		thrown when a thread is waiting, sleeping, or otherwise occupied, and the thread is interrupted, either before or during the activity. <br>       
 	* @return a <code> boolean </code> specifying verify, a variable that indicates if the number of rows, columns, snakes and ladders are correct. 
 	*/
@@ -380,7 +387,7 @@ public class Menu {
 	* This method displays the leaderboard of winners according to their score.<br>
 	* <b>name</b>: showPositionsBoard <br>
 	* <b>post</b>: The leaderboard of winners was displayed. <br>
-	* @throws IOException: <br>
+	* @throws IOException <br>
 	* 		thrown if...
 	* 		1. A local file that was no longer available is being read.<br>
     *       2. Any process closed the stream while a stream is being used to read data.<br>
@@ -400,7 +407,7 @@ public class Menu {
 	* This method displays the game board with the players, snakes, leaders and boxes listed.<br>
 	* <b>name</b>: showGrid <br>
 	* <b>post</b>: The game board was displayed with all the required features. <br>
-	* @throws IOException: <br>
+	* @throws IOException <br>
 	* 		thrown if...
 	* 		1. A local file that was no longer available is being read.<br>
     *       2. Any process closed the stream while a stream is being used to read data.<br>
@@ -415,12 +422,12 @@ public class Menu {
 	* This method allows the game to run automatically without waiting for a line break by the user and within two seconds between each move.<br>
 	* <b>name</b>: showSimul <br>
 	* <b>post</b>: The game automatically ran successfully. <br>
-	* @throws IOException: <br>
+	* @throws IOException <br>
 	* 		thrown if...
 	* 		1. A local file that was no longer available is being read.<br>
     *       2. Any process closed the stream while a stream is being used to read data.<br>
     *       3. The disk space was no longer available while trying to write to a file.<br>
-    * @throws InterruptedException: <br>
+    * @throws InterruptedException <br>
 	* 		thrown when a thread is waiting, sleeping, or otherwise occupied, and the thread is interrupted, either before or during the activity. <br>       
 	*/
 
@@ -442,7 +449,7 @@ public class Menu {
 	* This method allows the user to enter the name or nickname of the winning player to be added to the leaderboard.<br>
 	* <b>name</b>: registerWinner <br>
 	* <b>post</b>: The user was able to enter the name or nickname of the winner player. <br>
-	* @throws IOException: <br>
+	* @throws IOException <br>
 	* 		thrown if...
 	* 		1. A local file that was no longer available is being read.<br>
     *       2. Any process closed the stream while a stream is being used to read data.<br>

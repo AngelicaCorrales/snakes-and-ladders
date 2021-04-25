@@ -2,6 +2,12 @@ package model;
 
 import java.io.Serializable;
 
+/**
+ * This class contains attributes, relationships, and methods of a winner.
+ * @version 1
+ * @author Angelica Corrales Quevedo, https://github.com/AngelicaCorrales
+ * @author Keren Lopez Cordoba, https://github.com/KerenLopez
+ */
 public class Winner implements Serializable{
 	
 	//Attributes
@@ -22,9 +28,11 @@ public class Winner implements Serializable{
 	* <b>name</b>: Winner <br>
 	* <b>pre</b>: the variables symbol, nickname and score are already initialized. <br>
 	* <b>post</b>: All the attributes of the class were initialized. <br>
-	* @param symbol Is a char variable that contains the symbol of a winner player. symbol=='*' or symbol== '!' or  symbol== 'O' or symbol== 'X' or symbol=='%' or	 symbol== '$' or symbol=='#' or symbol== '+' or symbol=='&'.<br>
-	* @param nickname Is a String variable that contains the name of a winner player. nickname!=null && nickname!= "".<br>
+	* @param symbol Is a char variable that contains the symbol of a winner player. symbol=='*' or symbol== '!' or  symbol== 'O' or symbol== 'X' or symbol=='%' or	 symbol== '$' or symbol=='#' or symbol== '+' or symbol==38.<br>
+	* @param nickname Is a String variable that contains the name of a winner player. nickname!=null and nickname!= "".<br>
 	* @param score Is an integer variable that contains the score of a winner player in the game. score!=0.<br>
+	* @param gameSettings Is a String variable that contains the game settings. gameSettings!=null, gameSettings!="".<br>
+	* @param players Is a String variable that contains the player symbols. players!=null, players!="".<br>
 	*/
 	
 	public Winner(char symbol, String nickname, int score, String gameSettings, String players) {

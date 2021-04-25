@@ -1,4 +1,10 @@
 package model;
+/**
+ * This class contains attributes, relationships, and methods of a player.
+ * @version 1
+ * @author Angelica Corrales Quevedo, https://github.com/AngelicaCorrales
+ * @author Keren Lopez Cordoba, https://github.com/KerenLopez
+ */
 
 public class Player {
 
@@ -16,7 +22,7 @@ public class Player {
 	*<b>pre</b>: the variable symbol is already initialized. <br>
 	*<b>post:</b> the attributes of the class have been initialized.<br>
 	*@param symbol Is a char variable that contains the player's symbol. symbol=='*' or symbol== '!' or  symbol== 'O' or symbol== 'X' 
-		 or symbol=='%' or	 symbol== '$' or symbol=='#' or symbol== '+' or symbol=='&'.<br>
+		 or symbol=='%' or	 symbol== '$' or symbol=='#' or symbol== '+' or symbol==38.<br>
 	*/
 	public Player(char symbol) {
 		this.symbol = symbol;

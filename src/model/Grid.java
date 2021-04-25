@@ -2,6 +2,12 @@ package model;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * This class contains attributes, relationships, and methods of a grid.
+ * @version 1
+ * @author Angelica Corrales Quevedo, https://github.com/AngelicaCorrales
+ * @author Keren Lopez Cordoba, https://github.com/KerenLopez<br> Based on the linked matrix of https://github.com/seyerman
+ */
 public class Grid {
 	//Attributes
 	private int rows;
@@ -183,6 +189,7 @@ public class Grid {
 	*@param i Is an integer variable that contains the row for the new square in the column of the row. i greater than or equal to 0.<br>
 	*@param j Is an integer variable that contains the column for the first square in the row. j equal to 0.<br>
 	*@param currentFirstRow Is a Square object that references the first square of the row. currentFirstRow!=null.<br>
+	
 	*/
 	private void createRow(int i, int j, Square currentFirstRow) {
 		createCol(i,j+1,currentFirstRow,currentFirstRow.getDown());
@@ -268,7 +275,7 @@ public class Grid {
 	*<b>post:</b> the player has been moved on the grid. <br>
 	*@param num Is an integer variable that contains the number obtained from throwing the die. num from 1 to 6.<br>
 	*@param player Is a char variable that contains the player's symbol. player=='*' or player== '!' or  player== 'O' or player== 'X' 
-		 or player=='%' or	 player== '$' or player=='#' or player== '+' or player=='&'.<br>
+		 or player=='%' or	 player== '$' or player=='#' or player== '+' or player==38.<br>
 	*/
 	public void movePlayer(int num, char player) {
 		Square from =searchPlayerInSquare(player, zeroSquare, zeroSquare.getDown());
@@ -315,7 +322,7 @@ public class Grid {
 	*<b>pre</b>: player, square, and squareDown are already initialized.   <br>
 	*<b>post:</b> the searched square has been found. <br>
 	*@param player Is a char variable that contains the player's symbol. player=='*' or player== '!' or  player== 'O' or player== 'X' 
-		 or player=='%' or	 player== '$' or player=='#' or player== '+' or player=='&'.<br>
+		 or player=='%' or	 player== '$' or player=='#' or player== '+' or player==38.<br>
 	*@param square Is a Square object that references the first square of the row. square!=null.<br>
 	*@param squareDown Is a Square object that references the square down the first square of the row. squareDown!=null.<br>
 	*@return a <code>Square</code> specifying square, the searched square.

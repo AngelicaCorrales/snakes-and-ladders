@@ -1,5 +1,11 @@
 package model;
 
+/**
+ * This class contains attributes, relationships, and methods of a square.
+ * @version 1
+ * @author Angelica Corrales Quevedo, https://github.com/AngelicaCorrales
+ * @author Keren Lopez Cordoba, https://github.com/KerenLopez
+ */
 public class Square {
 	//Attributes
 	private int num;
@@ -95,7 +101,7 @@ public class Square {
 	*This method sets the respective upper square in the linked matrix of squares. <br>
 	*<b>name:</b> setUp.<br>
 	*<b>post:</b> the upper square has been set. <br>
-	*@param n Is a Square object that references the respective upper square in the linked matrix of squares.<br>
+	*@param u Is a Square object that references the respective upper square in the linked matrix of squares.<br>
 	*/
 	public void setUp(Square u) {
 		up = u;
@@ -105,7 +111,7 @@ public class Square {
 	*This method sets the respective down square in the linked matrix of squares. <br>
 	*<b>name:</b> setDown.<br>
 	*<b>post:</b> the down square has been set. <br>
-	*@param n Is a Square object that references the respective down square in the linked matrix of squares.<br>
+	*@param d Is a Square object that references the respective down square in the linked matrix of squares.<br>
 	*/
 	public void setDown(Square d) {
 		down = d;
@@ -215,7 +221,7 @@ public class Square {
 	*This method sets the square where the ladder ends in the linked matrix of squares. <br>
 	*<b>name:</b> setFinalLadder.<br>
 	*<b>post:</b> the square where the ladder ends has been set. <br>
-	*@param p Is a Square object that references the square where the ladder ends in the linked matrix of squares.<br>
+	*@param finalLadder Is a Square object that references the square where the ladder ends in the linked matrix of squares.<br>
 	*/
 	public void setFinalLadder(Square finalLadder) {
 		this.finalLadder = finalLadder;
@@ -235,7 +241,7 @@ public class Square {
 	*This method sets the square where the snake ends in the linked matrix of squares. <br>
 	*<b>name:</b> setFinalSnake.<br>
 	*<b>post:</b> the square where the snake ends has been set. <br>
-	*@param p Is a Square object that references the square where the snake ends in the linked matrix of squares.<br>
+	*@param finalSnake Is a Square object that references the square where the snake ends in the linked matrix of squares.<br>
 	*/
 	public void setFinalSnake(Square finalSnake) {
 		this.finalSnake = finalSnake;
@@ -332,7 +338,7 @@ public class Square {
 	*<b>pre</b>: player is already initialized.   <br>
 	*<b>post:</b> the searched player could have been found. <br>
 	*@param player Is a char variable that contains the player's symbol. player=='*' or player== '!' or  player== 'O' or player== 'X' 
-		 or player=='%' or	 player== '$' or player=='#' or player== '+' or player=='&'.<br>
+		 or player=='%' or	 player== '$' or player=='#' or player== '+' or player==38.<br>
 	*@return a <code>Player</code> that might correspond to the searched player.
 	*/
 	public Player searchPlayer(char player) {
@@ -346,7 +352,7 @@ public class Square {
 	*<b>pre</b>: player is already initialized.   <br>
 	*<b>post:</b> the searched player could have been found. <br>
 	*@param player Is a char variable that contains the player's symbol. player=='*' or player== '!' or  player== 'O' or player== 'X' 
-		 or player=='%' or	 player== '$' or player=='#' or player== '+' or player=='&'.<br>
+		 or player=='%' or	 player== '$' or player=='#' or player== '+' or player==38.<br>
 	*@param current Is a Player object that references a player in the linked list of players.<br>
 	*@return a <code>Player</code> specifying p, that might correspond to the searched player.
 	*/
