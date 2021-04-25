@@ -10,9 +10,18 @@ import model.Game;
 
 public class Menu {
 	
+	//Attributes
 	public BufferedReader br;
 	public BufferedWriter bw;
+	
+	//Relationship
 	private Game mainGame;
+	
+	/**
+	* Builder method <br>
+	* <b>name</b>: Menu <br>
+	* <b>post</b>: The attributes and relationship of the class were initialized. <br>
+	*/
 	
 	public Menu() throws IOException{
 		br = new BufferedReader(new InputStreamReader(System.in));
@@ -30,6 +39,19 @@ public class Menu {
 		}
 	}
 	
+	/**
+	* This method calls the menu and sends the option chosen by the user to another method.<br>
+	* <b>name</b>: mainMethod <br>
+	* <b>post</b>: The menu was called and the option chosen by the user was sent to another method. <br>
+	* @throws IOException: <br>
+	* 		thrown if...
+	* 		1. A local file that was no longer available is being read.<br>
+    *       2. Any process closed the stream while a stream is being used to read data.<br>
+    *       3. The disk space was no longer available while trying to write to a file.<br>
+    * @throws InterruptedException: <br>
+	* 		thrown when a thread is waiting, sleeping, or otherwise occupied, and the thread is interrupted, either before or during the activity. <br>       
+	*/
+	
 	public void mainMethod() throws IOException, InterruptedException {
 		bw.write("\n*******************************************************************************************************************************************************************");
 		bw.flush();
@@ -42,12 +64,40 @@ public class Menu {
 		bw.close();
 	}
 	
+	/**
+	* This method calls the menu in case that the user chose an incorrect option.<br>
+	* <b>name</b>: chooseOption <br>
+	* <b>post</b>: The menu was called again if the option chosen by the user was incorrect. <br>
+	* @param op Is an Integer variable that contains the number of the option chosen by the user. <br>
+	* @throws IOException: <br>
+	* 		thrown if...
+	* 		1. A local file that was no longer available is being read.<br>
+    *       2. Any process closed the stream while a stream is being used to read data.<br>
+    *       3. The disk space was no longer available while trying to write to a file.<br>
+    * @throws InterruptedException: <br>
+	* 		thrown when a thread is waiting, sleeping, or otherwise occupied, and the thread is interrupted, either before or during the activity. <br>       
+	*/
+	
 	public void chooseOption(int op) throws IOException, InterruptedException {
 		if(op!=3) {
 			chooseOption(menuOptions());
 		}
 	}
 
+	/**
+	* This method shows the options available to the user.<br>
+	* <b>name</b>: menuOptions <br>
+	* <b>post</b>: All the options of the program were displayed to the user. <br>
+	* @throws IOException: <br>
+	* 		thrown if...
+	* 		1. A local file that was no longer available is being read.<br>
+    *       2. Any process closed the stream while a stream is being used to read data.<br>
+    *       3. The disk space was no longer available while trying to write to a file.<br>
+    * @throws InterruptedException: <br>
+	* 		thrown when a thread is waiting, sleeping, or otherwise occupied, and the thread is interrupted, either before or during the activity. <br>       
+	 * @return an <code> Integer </code> specifying option, a variable that contains the number of the option chosen by the user.
+	*/
+	
 	public int menuOptions() throws IOException, InterruptedException{
 		int option = 0;
 		boolean menu = true;
@@ -91,6 +141,19 @@ public class Menu {
 		return option;
 	}
 
+	/**
+	* This method allows the user to enter the text string that contains all the information about the game (number of rows and columns of the board, plus the snakes, ladders and players).<br>
+	* <b>name</b>: startGame <br>
+	* <b>post</b>: The user was able to enter the text string with all its features. <br>
+	* @throws IOException: <br>
+	* 		thrown if...
+	* 		1. A local file that was no longer available is being read.<br>
+    *       2. Any process closed the stream while a stream is being used to read data.<br>
+    *       3. The disk space was no longer available while trying to write to a file.<br>
+    * @throws InterruptedException: <br>
+	* 		thrown when a thread is waiting, sleeping, or otherwise occupied, and the thread is interrupted, either before or during the activity. <br>       
+	*/
+	
 	public void startGame() throws IOException, InterruptedException {
 		bw.write("\nPor favor ingrese las filas y columnas tablero seguido de el numero de serpientes, escaleras y jugadores. Puede incluir los simbolos de los jugadores si lo desea, de lo contrario seran asignados aleatoriamente.\n");
 		bw.flush();
@@ -160,6 +223,19 @@ public class Menu {
 		}
 	}
 
+	/**
+	* This method displays the board throughout the game and allows the user to enter commands such as num, simul or menu.<br>
+	* <b>name</b>: showGameBoard <br>
+	* <b>post</b>: The game board was displayed throughout the game and the user could enter commands if he/she desired. <br>
+	* @throws IOException: <br>
+	* 		thrown if...
+	* 		1. A local file that was no longer available is being read.<br>
+    *       2. Any process closed the stream while a stream is being used to read data.<br>
+    *       3. The disk space was no longer available while trying to write to a file.<br>
+    * @throws InterruptedException: <br>
+	* 		thrown when a thread is waiting, sleeping, or otherwise occupied, and the thread is interrupted, either before or during the activity. <br>       
+	*/
+	
 	private void showGameBoard() throws IOException, InterruptedException {
 		bw.write("\n"+mainGame.getGrid().toString2()+"\n");
 		bw.write("Presione enter para continuar o digite los comandos num, simul o menu si lo desea.\n");
@@ -197,6 +273,17 @@ public class Menu {
 		}
 	}
 
+	/**
+	* This method verifies that the symbols entered by the user are correct (that they correspond to the default signs and that they are not repeated). <br>
+	* <b>name</b>: verifySymbols <br>
+	* <b>pre</b>: The variables players, cont and times are already initialized. <br>
+	* <b>post</b>: True or false was returned depending of the verifications carried out with the symbols. <br>
+	* @param times Is an Integer variable that will contains the number of times that a given symbol is encountered in the text string.<br>
+	* @param cont Is an Integer variable that will contain the position of a letter within the text string.<br>
+	* @param p Is a String variable that contains all the symbols of the players. p!="" p!=null.<br>
+	* @return a <code> boolean </code> specifying correct, a variable that indicates if all the symbols that were entered are correct. 
+	*/
+	
 	private boolean verifySymbols(String players, int cont, int times) {
 		boolean correct = false;
 		int c = 0;
@@ -224,6 +311,18 @@ public class Menu {
 		return correct;
 	}
 
+	/**
+	* This method verifies that a certain symbol isn't repeated (that another player has the same) in the whole text string. <br>
+	* <b>name</b>: searchPlayer <br>
+	* <b>pre</b>: The variables p, s, cont and times are already initialized. <br>
+	* <b>post</b>: True or false was returned depending of the result of the verification. <br>
+	* @param times Is an Integer variable that will contains the number of times that a given symbol is encountered in the text string.<br>
+	* @param cont Is an Integer variable that will contain the position of a letter within the text string.<br>
+	* @param p Is a String variable that contains all the symbols of the players. p!="" p!=null.<br>
+	* @param s Is a char variable that contains all the symbols of the players. p!='' p!=null.<br>
+	* @return a <code> boolean </code> specifying find, a variable that indicates if a certain symbol that was entered is correct. 
+	*/
+	
 	private boolean searchPlayer(String p, char s, int cont, int times) {
 		boolean find = false;
 		if(times<=1 && cont!=p.length()) {
@@ -238,6 +337,25 @@ public class Menu {
 		}
 		return find;
 	}
+	
+	/**
+	* This method verifies that the number of rows, columns, snakes and ladders entered by the user is correct. <br>
+	* <b>name</b>: verifyData <br>
+	* <b>pre</b>: The variables rows, cols, snakes, ladders and players are already initialized. <br>
+	* <b>post</b>: The number of rows, columns, snakes and ladders were verified according to the restrictions. <br>
+	* @param snakes Is an Integer variable that contains the number of snakes for the game.<br>
+	* @param ladders Is an Integer variable that contains the number of ladders for the game.<br>
+	* @param rows Is an Integer variable that contains the number of rows for the game.<br>
+	* @param columns Is an Integer variable that contains the number of columns for the game.<br>
+	* @param players Is a String variable that contains the players for the game. p!="" && p!=null.<br>
+	* @throws IOException: <br>
+	* 		thrown if...
+	* 		1. A local file that was no longer available is being read.<br>
+    *       2. Any process closed the stream while a stream is being used to read data.<br>
+    *       3. The disk space was no longer available while trying to write to a file.<br>
+    * @throws InterruptedException: <br>
+	* 		thrown when a thread is waiting, sleeping, or otherwise occupied, and the thread is interrupted, either before or during the activity. <br>       
+	*/
 
 	private boolean verifyData(int rows, int cols, int snakes, int ladders, String players) throws IOException, InterruptedException {
 		boolean verify=false;
@@ -257,6 +375,17 @@ public class Menu {
 		return verify;
 	}
 
+	/**
+	* This method displays the leaderboard of winners according to their score.<br>
+	* <b>name</b>: showPositionsBoard <br>
+	* <b>post</b>: The leaderboard of winners was displayed. <br>
+	* @throws IOException: <br>
+	* 		thrown if...
+	* 		1. A local file that was no longer available is being read.<br>
+    *       2. Any process closed the stream while a stream is being used to read data.<br>
+    *       3. The disk space was no longer available while trying to write to a file.<br>
+	*/
+	
 	public void showPositionsBoard() throws IOException {
 		bw.write("\n                                 **************************************************************************************************");
 		bw.write("\n                                                                   Tablero de posiciones                                           ");
@@ -266,11 +395,35 @@ public class Menu {
 		bw.write(mainGame.listWinnersInorder());
 	}
 
-	public void showGrid() throws IOException {
+	/**
+	* This method displays the game board with the players, snakes, leaders and boxes listed.<br>
+	* <b>name</b>: showGrid <br>
+	* <b>post</b>: The game board was displayed with all the required features. <br>
+	* @throws IOException: <br>
+	* 		thrown if...
+	* 		1. A local file that was no longer available is being read.<br>
+    *       2. Any process closed the stream while a stream is being used to read data.<br>
+    *       3. The disk space was no longer available while trying to write to a file.<br>
+	*/
+	
+	private void showGrid() throws IOException {
 		bw.write("\n"+mainGame.getGrid().toString()+"\n");
 	}
+	
+	/**
+	* This method allows the game to run automatically without waiting for a line break by the user and within two seconds between each move.<br>
+	* <b>name</b>: showSimul <br>
+	* <b>post</b>: The game automatically ran successfully. <br>
+	* @throws IOException: <br>
+	* 		thrown if...
+	* 		1. A local file that was no longer available is being read.<br>
+    *       2. Any process closed the stream while a stream is being used to read data.<br>
+    *       3. The disk space was no longer available while trying to write to a file.<br>
+    * @throws InterruptedException: <br>
+	* 		thrown when a thread is waiting, sleeping, or otherwise occupied, and the thread is interrupted, either before or during the activity. <br>       
+	*/
 
-	public void showSimul() throws IOException, InterruptedException {
+	private void showSimul() throws IOException, InterruptedException {
 		String msg = mainGame.throwDie();
 		bw.write(msg);
 		bw.flush();
@@ -284,7 +437,18 @@ public class Menu {
 		}
 	}
 
-	public void registerWinner() throws IOException {
+	/**
+	* This method allows the user to enter the name or nickname of the winning player to be added to the leaderboard.<br>
+	* <b>name</b>: registerWinner <br>
+	* <b>post</b>: The user was able to enter the name or nickname of the winner player. <br>
+	* @throws IOException: <br>
+	* 		thrown if...
+	* 		1. A local file that was no longer available is being read.<br>
+    *       2. Any process closed the stream while a stream is being used to read data.<br>
+    *       3. The disk space was no longer available while trying to write to a file.<br>
+	*/
+	
+	private void registerWinner() throws IOException {
 		bw.write("\nPor favor ingrese el apodo o nombre del jugador ganador: \n");
 		bw.flush();
 		String line = br.readLine();

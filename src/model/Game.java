@@ -35,9 +35,9 @@ public class Game {
 	}
 	
 	/**
-	* This method serializes or saves all the information about the winner of each game.<br>
+	* This method serializes or saves all the information about the winner of each round in the game.<br>
 	* <b>name</b>: saveWinners <br>
-	* <b>post</b>: The winner of a game was saved. <br>
+	* <b>post</b>: The winner of a round was saved. <br>
 	* @throws IOException: <br>
 	* 		thrown if...
 	* 		1. A local file that was no longer available is being read.<br>
@@ -112,12 +112,12 @@ public class Game {
 	* <b>pre</b>: the variables p, playersN and cont are already initialized. <br>
 	* <b>post</b>: Each player has an assigned symbol. <br>
 	* @param playersN Is an Integer variable that contains the number of players for the game. playersN greater than 0.<br>
-	* @param cont Is an Integer variable that will contain the number of players that have already been assigned a symbol. cont==0.<br>
-	* @param p Is a String variable that will contain each player's symbols for the game. p=="".<br>
+	* @param cont Is an Integer variable that will contain the number of players that have already been assigned a symbol.<br>
+	* @param p Is a String variable that will contain each player's symbols for the game.<br>
 	* @return a <code> String </code> specifying p, a variable with the players' symbols for the game. 
 	*/
 	
-	public String assignSymbol(String p, int playersN, int cont) {
+	private String assignSymbol(String p, int playersN, int cont) {
 		boolean add = true;
 		char symbol1 = '*';
 		char symbol2 = '!';
@@ -206,12 +206,12 @@ public class Game {
 	/**
 	* This method searches for a specific symbol within the text string that contains the symbols of the other players. <br>
 	* <b>name</b>: searchSymbol <br>
-	* <b>pre</b>: the variables p, playersN and cont are already initialized. <br>
-	* <b>post</b>: Each player has an assigned symbol. <br>
-	* @param times Is an Integer variable that will contains the number of times that a given symbol is encountered in the text string. times==0.<br>
-	* @param cont Is an Integer variable that will contain the position of the letter it is in from the text string. cont==0.<br>
-	* @param p Is a String variable that contains each player's symbols for the game. p=="".<br>
-	* @param s Is a char variable that contains a specific symbol of a player. p=="".<br>
+	* <b>pre</b>: the variables p, s, cont and times are already initialized. <br>
+	* <b>post</b>: True or false was returned depending of the result of the verification. <br>
+	* @param times Is an Integer variable that will contains the number of times that a given symbol is found in the text string.<br>
+	* @param cont Is an Integer variable that will contain the position of a letter within the text string.<br>
+	* @param p Is a String variable that contains the symbols of all the players for the game.<br>
+	* @param s Is a char variable that contains a specific symbol of a player. p!='' p!=null.<br>
 	* @return a <code> boolean </code> specifying find, a variable that indicates if a certain symbol has already been assigned to a player. 
 	*/
 	
@@ -353,10 +353,10 @@ public class Game {
 	* <b>pre</b>: The objects like current and parent are already initialized. <br>
 	* <b>post</b>: The winners were concatenated in an inorder way. <br>
 	* @param current Is a Winner object that represents the root of the binary tree of winners. <br>
-	* @param parent Is a Winner object that represents the object that is up of a winner object.<br>
+	* @param parent Is a Winner object that represents the object that is up of another winner object.<br>
 	*/
 	
-	public void listWinnersInorder(Winner current, Winner parent) {
+	private void listWinnersInorder(Winner current, Winner parent) {
 		if(current!=null) {
 			if(current.getLeft()!=parent) {
 				listWinnersInorder(current.getLeft(), current);
