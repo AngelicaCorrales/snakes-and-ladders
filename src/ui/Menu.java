@@ -92,7 +92,7 @@ public class Menu {
 	}
 
 	public void startGame() throws IOException, InterruptedException {
-		bw.write("\nPor favor ingrese el tamaño del tablero seguido de el numero de serpientes, escaleras y jugadores. Puede incluir los simbolos de los jugadores si lo desea, de lo contrario seran asignados aleatoriamente.\n");
+		bw.write("\nPor favor ingrese las filas y columnas tablero seguido de el numero de serpientes, escaleras y jugadores. Puede incluir los simbolos de los jugadores si lo desea, de lo contrario seran asignados aleatoriamente.\n");
 		bw.flush();
 		String line = br.readLine();
 		if(line!=null) {
@@ -102,6 +102,7 @@ public class Menu {
 				bw.write("Debe ingresar toda la informacion solicitada correctamente");
 				bw.flush();
 				startGame();
+				return;
 			}else {
 				int rows = Integer.parseInt(info[0]);
 				int cols = Integer.parseInt(info[1]);
@@ -119,23 +120,32 @@ public class Menu {
 						bw.write("El numero de jugadores no puede ser menor o igual a cero");
 						bw.flush();
 						startGame();
+						return;
 					}
-					verifyData(rows, cols, snakes, ladders, players);
+					if(verifyData(rows, cols, snakes, ladders, players)) {
+						startGame();
+						return;
+					}
 				}catch(NumberFormatException num) {
 					if(players.length()>9) {
 						bw.write("Lo sentimos, esta version del juego no esta disponible para mas de 9 jugadores");
 						bw.flush();
 						startGame();
+						return;
 					}else {
 						int cont = 0;
 						int times = 0;
 						boolean correct = verifySymbols(players, cont, times); 
 						if(correct==false) {
-							verifyData(rows, cols, snakes, ladders, players);
+							if(verifyData(rows, cols, snakes, ladders, players)) {
+								startGame();
+								return;
+							}
 						}else {
 							bw.write("Los signos de los jugadores no coinciden con los predeterminados (* ! O X % $ # + &) o los simbolos de los jugadores se encuentran repetidos");
 							bw.flush();
 							startGame();
+							return;
 						}
 					}
 				}
@@ -229,19 +239,22 @@ public class Menu {
 		return find;
 	}
 
-	private void verifyData(int rows, int cols, int snakes, int ladders, String players) throws IOException, InterruptedException {
-		if(rows<=0 || cols<=0 || snakes<=0 || ladders<=0 || (((snakes*2)+(ladders*2))>(rows*cols)) ) {
-			if(((snakes*2)+(ladders*2))>(rows*cols)){
+	private boolean verifyData(int rows, int cols, int snakes, int ladders, String players) throws IOException, InterruptedException {
+		boolean verify=false;
+		if(rows<=2 || cols<=2 || rows<=0 || cols<=0 || snakes<=0 || ladders<=0 || (((snakes*2)+(ladders*2))>(rows*cols)) ) {
+			verify=true;
+			if(rows<=2 ||cols<=2||((snakes*2)+(ladders*2))>(rows*cols)){
 				bw.write("De acuerdo con las dimensiones del tablero ingresadas no es posible colocar el numero de serpientes o escaleras digitado");
 				bw.flush();
 			}else {
 				bw.write("Las filas, columnas, serpientes o escaleras no pueden ser menores o iguales a cero");
 				bw.flush();
 			}
-			startGame();
+			
 		}else {
 			mainGame.startGame(rows, cols, snakes, ladders, players);
 		}
+		return verify;
 	}
 
 	public void showPositionsBoard() throws IOException {
