@@ -271,6 +271,7 @@ public class Menu {
 			}else if(line.equalsIgnoreCase("simul")){
 				showSimul();
 			}else if(line.equalsIgnoreCase("menu")) {
+				mainGame.resetPlayerPosition();
 				menuOptions();
 			}else {
 				bw.write("El comando ingresado no es valido\n");
@@ -304,14 +305,15 @@ public class Menu {
 		char symbol7 = '#';
 		char symbol8 = '+';
 		char symbol9 = '&';
-		if(cont!=players.length()) {
+		if(cont<players.length()) {
 			if(s!=symbol1 && s!=symbol2 && s!=symbol3 && s!=symbol4 && s!=symbol5 && s!=symbol6 && s!=symbol7 && s!=symbol8 && s!=symbol9) {
+				correct=true;
 				return correct;
 			}else {
 				correct = searchPlayer(players, s, c, times);
 				cont+=1;
 				if(correct==false && cont!=players.length()) {
-					verifySymbols(players,cont, times);
+					correct=verifySymbols(players,cont, times);
 				}
 			}
 		}
@@ -332,7 +334,7 @@ public class Menu {
 	
 	private boolean searchPlayer(String p, char s, int cont, int times) {
 		boolean find = false;
-		if(times<=1 && cont!=p.length()) {
+		if(times<=1 && cont<p.length()) {
 			if(s!=p.charAt(cont)) {
 				find = searchPlayer(p, s, (cont+=1), times);
 			}else {
@@ -395,12 +397,12 @@ public class Menu {
 	*/
 	
 	public void showPositionsBoard() throws IOException {
-		bw.write("\n                                 **************************************************************************************************");
-		bw.write("\n                                                                   Tablero de posiciones                                           ");
-		bw.write("\n                                 **************************************************************************************************");
-		bw.write("\n                                             Nickname        *            Simbolo               *               Puntaje            ");
-		bw.write("\n                                 **************************************************************************************************");
-		bw.write(mainGame.listWinnersInorder());
+		bw.write("\n***********************************************************************************************************************");
+		bw.write("\n                                              Tablero de posiciones                                           ");
+		bw.write("\n***********************************************************************************************************************");
+		bw.write("\n       Nickname       *       Simbolo       *        Puntaje       *  Parámetros del juego  *  Simbolos de jugadores  ");
+		bw.write("\n***********************************************************************************************************************");
+		bw.write(mainGame.listWinnersInorder()+"\n");
 	}
 
 	/**
