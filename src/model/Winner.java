@@ -20,9 +20,9 @@ public class Winner implements Serializable{
 	* <b>name</b>: Winner <br>
 	* <b>pre</b>: the variables symbol, nickname and score are already initialized. <br>
 	* <b>post</b>: All the attributes of the class were initialized. <br>
-	* @param symbol is a char variable that contains the symbol of a winner player. symbol=='*' or symbol== '!' or  symbol== 'O' or symbol== 'X' or symbol=='%' or	 symbol== '$' or symbol=='#' or symbol== '+' or symbol=='&'.<br>
-	* @param nickname is a String variable that contains the name of a winner player. nickname!=null && nickname!= "".<br>
-	* @param score is an integer variable that contains the score of a winner player in the game. score!=0.<br>
+	* @param symbol Is a char variable that contains the symbol of a winner player. symbol=='*' or symbol== '!' or  symbol== 'O' or symbol== 'X' or symbol=='%' or	 symbol== '$' or symbol=='#' or symbol== '+' or symbol=='&'.<br>
+	* @param nickname Is a String variable that contains the name of a winner player. nickname!=null && nickname!= "".<br>
+	* @param score Is an integer variable that contains the score of a winner player in the game. score!=0.<br>
 	*/
 	
 	public Winner(char symbol, String nickname, int score) {
