@@ -22,7 +22,7 @@ public class Square {
 	*This is the constructor of the class. <br>
 	*<b>name:</b> Square. <br>
 	*<b>pre</b>: the variables row and col are already initialized. <br>
-	*<b>post:</b> the attributes and relationships of the class have been initialized.<br>
+	*<b>post:</b> the attributes of the class have been initialized.<br>
 	*@param row Is an integer variable that contains the number of the row for the square in the grid. row greater than or equal to 0.<br>
 	*@param col Is an integer variable that contains the number of the column for the square in the grid. col greater than or equal to 0.<br>
 	*/
@@ -246,7 +246,7 @@ public class Square {
 	*<b>name:</b> addPlayer.<br>
 	*<b>pre</b>: player is already initialized.   <br>
 	*<b>post:</b> the player has been added to the square. <br>
-	*@param player Is a Player object that references the player that wants to be added to the square<br>
+	*@param player Is a Player object that references the player that wants to be added to the square. player!=null<br>
 	*/
 	private void addPlayer(Player player) {
 		//AT THE TOP OF THE LIST
@@ -269,7 +269,7 @@ public class Square {
 	*<b>name:</b> removePlayer.<br>
 	*<b>pre</b>: player is already initialized.   <br>
 	*<b>post:</b> the player has been removed from the square. <br>
-	*@param player Is a Player object that references the player that wants to be removed from the square<br>
+	*@param player Is a Player object that references the player that wants to be removed from the square. player!=null<br>
 	*/
 	private void removePlayer(Player player) {
 		if(player.getSymbol()==finalPlayer.getSymbol()) {
@@ -297,8 +297,8 @@ public class Square {
 	*<b>name:</b> movePlayer.<br>
 	*<b>pre</b>: square and player are already initialized.   <br>
 	*<b>post:</b> the player has been moved from the current square to the player's destination square. <br>
-	*@param square Is a Square object that references the player's destination square<br>
-	*@param player Is a Player object that references the player that wants to be moved.<br>
+	*@param square Is a Square object that references the player's destination square. square!=null<br>
+	*@param player Is a Player object that references the player that wants to be moved. player!=null<br>
 	*/
 	public void movePlayer(Square square, Player player) {
 		
@@ -343,7 +343,7 @@ public class Square {
 	/**
 	*This method searches the player in the linked list of players of the current square.<br>
 	*<b>name:</b> searchPlayer.<br>
-	*<b>pre</b>: current and player are already initialized.   <br>
+	*<b>pre</b>: player is already initialized.   <br>
 	*<b>post:</b> the searched player could have been found. <br>
 	*@param player Is a char variable that contains the player's symbol. player=='*' or player== '!' or  player== 'O' or player== 'X' 
 		 or player=='%' or	 player== '$' or player=='#' or player== '+' or player=='&'.<br>
@@ -366,7 +366,6 @@ public class Square {
 	/**
 	* This method obtains a String with players on the square. <br>
 	* <b>name</b>: playerString.<br>
- 	*<b>pre</b>: player is already initialized.   <br>
  	* <b>post</b>: players have been obtained. <br>
 	*@param player Is a Player object that references a player in the linked list of players.<br>
  	* @return a <code> String </code> specifying s, players on the square.

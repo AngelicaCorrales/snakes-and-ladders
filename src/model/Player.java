@@ -14,7 +14,7 @@ public class Player {
 	*This is the constructor of the class. <br>
 	*<b>name:</b> Player.<br>
 	*<b>pre</b>: the variable symbol is already initialized. <br>
-	*<b>post:</b> the attributes and relationships of the class have been initialized.<br>
+	*<b>post:</b> the attributes of the class have been initialized.<br>
 	*@param symbol Is a char variable that contains the player's symbol. symbol=='*' or symbol== '!' or  symbol== 'O' or symbol== 'X' 
 		 or symbol=='%' or	 symbol== '$' or symbol=='#' or symbol== '+' or symbol=='&'.<br>
 	*/
