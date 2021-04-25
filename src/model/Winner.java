@@ -37,7 +37,7 @@ public class Winner implements Serializable{
 	* This method returns the nickname of a winner player. <br>
 	* <b>name</b>: getNickname <br>
 	* <b>post</b>: the nickname of a winner player has been gotten. <br>
-	* @return an <code> String </code> specifying nickname, the name of a winner player.
+	* @return a <code> String </code> specifying nickname, the name of a winner player.
 	*/
 	
 	public String getNickname() {
@@ -92,7 +92,7 @@ public class Winner implements Serializable{
 	* This method returns the parent element of a winning player in the binary tree. <br>
 	* <b>name</b>: getParent <br>
 	* <b>post</b>: the parent element of a winning player in the binary tree has been gotten. <br>
-	* @return a <code> Winner </code> specifying parent, the parent element of a winning player in the binary tree.
+	* @return a <code> Winner </code> specifying parent, the element above of a winning player in the binary tree.
 	*/
 	
 	public Winner getParent() {
@@ -124,7 +124,7 @@ public class Winner implements Serializable{
 	/**
 	* This method modifies the parent element of a winning player in the binary tree. <br>
 	* <b>name</b>: setParent<br>
-	* <b>post</b>: the parent element of a winning player in the binary tree has been changed. <br>
+	* <b>post</b>: the element above of a winning player in the binary tree has been changed. <br>
 	* @param parent is an object of type Winner.
 	*/
 
