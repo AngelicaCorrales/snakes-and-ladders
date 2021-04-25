@@ -18,7 +18,7 @@ public class Grid {
 	*<b>name:</b> Grid. <br>
 	*<b>pre</b>: the variables players, snakes, ladders,rows, columns are already initialized. <br>
 	*<b>post:</b> the attributes and relationships of the class have been initialized. The grid has been created. The snakes and ladders have been added to the grid.<br>
-	*@param players Is a String variable that contains the symbols of the players for the game. players!=null and players!="".<br>
+	*@param players Is a String variable that contains symbols of the players for the game. players!=null and players!="".<br>
 	*@param snakes Is an integer variable that contains the number of snakes for the game. snakes greater than 0.<br>
 	*@param ladders Is an integer variable that contains the number of ladders for the game. ladders greater than 0.<br>
 	*@param rows Is an integer variable that contains the number of rows for the game. rows greater than 2.<br>
@@ -144,7 +144,7 @@ public class Grid {
 	/**
 	*This method  searches the square according to specified coordinates.<br>
 	*<b>name:</b> searchSquare.<br>
-	*<b>pre</b>: i, j, square are already initialized.   <br>
+	*<b>pre</b>: i, j, and square are already initialized.   <br>
 	*<b>post:</b> the searched square has been found. <br>
 	*@param i Is an integer variable that contains the row of the searched square. i greater than or equal to 0.<br>
 	*@param j Is an integer variable that contains the column of the searched square. j greater than or equal to 0.<br>
@@ -178,7 +178,7 @@ public class Grid {
 	/**
 	*This method creates rows of the grid. <br>
 	*<b>name:</b> createRow.<br>
-	*<b>pre</b>: i, j, currentFirstRow are already initialized.   <br>
+	*<b>pre</b>: i, j, and currentFirstRow are already initialized.   <br>
 	*<b>post:</b> rows have been created. <br>
 	*@param i Is an integer variable that contains the row for the new square in the column of the row. i greater than or equal to 0.<br>
 	*@param j Is an integer variable that contains the column for the first square in the row. j equal to 0.<br>
@@ -219,11 +219,11 @@ public class Grid {
 	/**
 	*This method creates a row, column by column, of the grid. <br>
 	*<b>name:</b> createCol.<br>
-	*<b>pre</b>: i, j, prev, rowDown are already initialized.   <br>
+	*<b>pre</b>: i, j, and prev are already initialized.   <br>
 	*<b>post:</b> the row has been created. <br>
 	*@param i Is an integer variable that contains the row for the new square in the column of the row. i greater than or equal to 0.<br>
 	*@param j Is an integer variable that contains the column for the new square in the row. j greater than or equal to 0.<br>
-	*@param prev Is a Square object that references the previous square of the row.<br>
+	*@param prev Is a Square object that references the previous square of the row. prev!=null<br>
 	*@param rowDown Is a Square object that references the square down the previous square of the row.<br>
 	*/
 	private void createCol(int i, int j, Square prev, Square rowDown) {
@@ -349,7 +349,6 @@ public class Grid {
 	/**
 	* This method obtains a String with numbered rows of the grid, with snakes and ladders. <br>
 	* <b>name</b>: toStringRow.<br>
- 	*<b>pre</b>: firstRow is already initialized.   <br>
  	* <b>post</b>: rows has been obtained. <br>
  	*@param firstRow Is a Square object that references the first square of the row.<br>
  	* @return a <code> String </code> specifying msg, the numbered rows of the grid, with snakes and ladders.
@@ -366,7 +365,6 @@ public class Grid {
 	/**
 	* This method obtains a String with a numbered row of the grid, with snakes and ladders. <br>
 	* <b>name</b>: toStringCol.<br>
- 	*<b>pre</b>: current is already initialized.   <br>
  	* <b>post</b>: the row has been obtained. <br>
  	*@param current Is a Square object that references the first square of the row.<br>
  	* @return a <code> String </code> specifying msg, the numbered row of the grid, with snakes and ladders.
@@ -396,7 +394,6 @@ public class Grid {
 	/**
 	* This method obtains a String with rows of the grid from the game, with players, snakes and ladders. <br>
 	* <b>name</b>: toStringRow.<br>
- 	*<b>pre</b>: firstRow is already initialized.   <br>
  	* <b>post</b>: rows has been obtained. <br>
  	*@param firstRow Is a Square object that references the first square of the row.<br>
  	* @return a <code> String </code> specifying msg, rows of the grid from the game, with players, snakes and ladders.
@@ -413,7 +410,6 @@ public class Grid {
 	/**
 	* This method obtains a String with a row of the grid from the game, with players, snakes and ladders. <br>
 	* <b>name</b>: toStringCol2.<br>
- 	*<b>pre</b>: current is already initialized.   <br>
  	* <b>post</b>: the row has been obtained. <br>
  	*@param current Is a Square object that references the first square of the row.<br>
  	* @return a <code> String </code> specifying msg, the row of the grid from the game, with players, snakes and ladders.
