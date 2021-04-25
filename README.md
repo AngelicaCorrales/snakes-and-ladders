@@ -13,12 +13,14 @@ This program is about the well-known game called "Snakes and Ladders", which con
 * [Java](https://www.oracle.com/co/java/technologies/javase/javase-jdk8-downloads.html) - programming language implemented
 
 ## Versioned 📌
-We use [GitHub](http://github.com/) for versioning. For all available versions see the [tags in this repository](https://github.com/tu/proyecto/tags).
+We use [GitHub](http://github.com/) for versioning. For all available versions see the [tags in this repository](https://github.com/AngelicaCorrales/snakes-and-ladders/tags).
 
 ## Authors ✒️
-* **Angélica Corrales Quevedo**  - [AngelicaCorrales](https://github.com/AngelicaCorrales)
+* **Angélica Corrales Quevedo** - [AngelicaCorrales](https://github.com/AngelicaCorrales)
 * **Keren López Córdoba** - [KerenLopez](https://github.com/KerenLopez)
 
 ## More information 📖
-You can find more information about this project at [Snakes and Ladders: Functional requirements and diagram class](https://docs.google.com/document/d/15JzdULMXnux0LcVbhMj7-bVGBK5jEE8cklnvXyw6HDc/edit?usp=sharing)
+You can find more information about this project at [Snakes and Ladders: Functional requirements and class diagram](https://drive.google.com/file/d/1rVmxJDEuaWfT-qMSZDTdPMPb_k55HJWz/view?usp=sharing)
 
+## Credits 📄
+In the creation of the linked matrix (grid or game board) we rely on the following [repository](https://github.com/seyerman/java-intermediate-course-examples/tree/master/linked-matrix-base) that belongs to [Juan M. Reyes G.](https://github.com/seyerman)
