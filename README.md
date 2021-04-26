@@ -20,7 +20,7 @@ We use [GitHub](http://github.com/) for versioning. For all available versions s
 * **Keren López Córdoba** - [KerenLopez](https://github.com/KerenLopez)
 
 ## More information 📖
-You can find more information about this project at [Snakes and Ladders: Functional requirements and class diagram](https://drive.google.com/file/d/1rVmxJDEuaWfT-qMSZDTdPMPb_k55HJWz/view?usp=sharing)
+You can find more information about this project at [Snakes and Ladders: Functional requirements and class diagram](https://drive.google.com/file/d/1mJm_s6k3RA1cLFHUU7JyiBAEsPBIyZqg/view?usp=sharing)
 
 ## Credits 📄
 In the creation of the linked matrix (grid or game board) we rely on the following [repository](https://github.com/seyerman/java-intermediate-course-examples/tree/master/linked-matrix-base) that belongs to [Juan M. Reyes G.](https://github.com/seyerman)
